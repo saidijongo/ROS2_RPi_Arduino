@@ -1,10 +1,1431 @@
+
+
+
+
+jongo@jongo-desktop:~$ locale
+LANG=C.UTF-8
+LANGUAGE=
+LC_CTYPE="C.UTF-8"
+LC_NUMERIC="C.UTF-8"
+LC_TIME="C.UTF-8"
+LC_COLLATE="C.UTF-8"
+LC_MONETARY="C.UTF-8"
+LC_MESSAGES="C.UTF-8"
+LC_PAPER="C.UTF-8"
+LC_NAME="C.UTF-8"
+LC_ADDRESS="C.UTF-8"
+LC_TELEPHONE="C.UTF-8"
+LC_MEASUREMENT="C.UTF-8"
+LC_IDENTIFICATION="C.UTF-8"
+LC_ALL=
+jongo@jongo-desktop:~$ sudo apt update && sudo apt install locales
+[sudo] password for jongo:
+Hit:1 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease
+Hit:3 https://download.sublimetext.com apt/stable/ InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Ign:5 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:6 http://packages.ros.org/ros2/ubuntu mantic Release
+  404  Not Found [IP: 64.50.233.100 80]
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+jongo@jongo-desktop:~$ sudo locale-gen en_US en_US.UTF-8
+Generating locales (this might take a while)...
+  en_US.ISO-8859-1... done
+  en_US.UTF-8... done
+Generation complete.
+jongo@jongo-desktop:~$ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+jongo@jongo-desktop:~$ export LANG=en_US.UTF-8
+jongo@jongo-desktop:~$ sudo apt install software-properties-common curl gnupg lsb-release
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+software-properties-common is already the newest version (0.99.39).
+software-properties-common set to manually installed.
+curl is already the newest version (8.2.1-1ubuntu3.2).
+gnupg is already the newest version (2.2.40-1.1ubuntu1).
+gnupg set to manually installed.
+lsb-release is already the newest version (12.0-2).
+0 upgraded, 0 newly installed, 0 to remove and 113 not upgraded.
+jongo@jongo-desktop:~$ sudo add-apt-repository universe
+Adding component(s) 'universe' to all repositories.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Hit:1 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Hit:2 https://download.sublimetext.com apt/stable/ InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Ign:5 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:6 http://packages.ros.org/ros2/ubuntu mantic Release
+  404  Not Found [IP: 140.211.166.134 80]
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+jongo@jongo-desktop:~$ sudo apt update
+Ign:1 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:2 http://packages.ros.org/ros2/ubuntu mantic Release
+  404  Not Found [IP: 64.50.233.100 80]
+Hit:3 https://download.sublimetext.com apt/stable/ InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Reading package lists... Done
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo-desktop:~$ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+jongo@jongo-desktop:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+jongo@jongo-desktop:~$ sudo apt update
+Hit:1 https://download.sublimetext.com apt/stable/ InRelease
+Ign:2 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:3 http://packages.ros.org/ros2/ubuntu mantic Release
+  404  Not Found [IP: 140.211.166.134 80]
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-arm64.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-small (main/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons (main/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-hidpi (main/dep11/icons-64x64@2.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-arm64) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+jongo@jongo-desktop:~$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following NEW packages will be installed:
+  libqrtr1 linux-image-6.5.0-1010-raspi linux-modules-6.5.0-1010-raspi
+  protection-domain-mapper qrtr-tools ubuntu-pro-client-l10n
+The following packages have been kept back:
+  tracker-extract tracker-miner-fs
+The following packages will be upgraded:
+  alsa-ucm-conf base-files bind9-dnsutils bind9-host bind9-libs coreutils
+  distro-info distro-info-data dns-root-data firmware-sof-signed flash-kernel
+  fonts-noto-color-emoji gir1.2-gtk-4.0 gir1.2-javascriptcoregtk-4.1
+  gir1.2-javascriptcoregtk-6.0 gir1.2-mutter-13 gir1.2-nm-1.0
+  gir1.2-webkit-6.0 gir1.2-webkit2-4.1 gnome-characters gnome-shell
+  gnome-shell-common gnome-shell-extension-desktop-icons-ng
+  gnome-shell-extension-ubuntu-dock initramfs-tools initramfs-tools-bin
+  initramfs-tools-core ipp-usb libc-bin libc6 libc6-dbg libegl-mesa0 libgbm1
+  libgl1-mesa-dri libglapi-mesa libglx-mesa0 libgnutls30 libgtk-4-1
+  libgtk-4-bin libgtk-4-common libgtk-4-media-gstreamer
+  libjavascriptcoregtk-4.1-0 libjavascriptcoregtk-6.0-1 libmutter-13-0
+  libnetplan0 libnm0 libnss-systemd libpam-modules libpam-modules-bin
+  libpam-runtime libpam-systemd libpam0g libqpdf29 librados2 librbd1
+  libsgutils2-1.46-2 libssh-4 libssl3 libsysmetrics1 libsystemd-shared
+  libsystemd0 libtiff6 libudev1 libudisks2-0 libwebkit2gtk-4.1-0
+  libwebkitgtk-6.0-4 linux-firmware linux-image-raspi locales login
+  mesa-vulkan-drivers mutter-common mutter-common-bin netplan-generator
+  netplan.io network-manager network-manager-config-connectivity-ubuntu
+  openssl passwd python3-distro-info python3-distupgrade python3-netplan
+  python3-paramiko python3-pil snapd systemd systemd-dev systemd-hwe-hwdb
+  systemd-oomd systemd-resolved systemd-sysv systemd-timesyncd tzdata
+  tzdata-icu ubuntu-advantage-tools ubuntu-desktop ubuntu-desktop-minimal
+  ubuntu-desktop-raspi ubuntu-minimal ubuntu-release-upgrader-core
+  ubuntu-release-upgrader-gtk ubuntu-report ubuntu-standard udev udisks2 unzip
+  xserver-common xserver-xephyr xserver-xorg-core xserver-xorg-legacy xwayland
+111 upgraded, 6 newly installed, 0 to remove and 2 not upgraded.
+39 standard LTS security updates
+Need to get 648 MB/657 MB of archives.
+After this operation, 79.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libc6-dbg arm64 2.38-1ubuntu6.1 [9,289 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libc6 arm64 2.38-1ubuntu6.1 [2,739 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 base-files arm64 13ubuntu2.1 [73.9 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 coreutils arm64 9.1-1ubuntu2.23.10.1 [1,339 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 login arm64 1:4.13+dfsg1-1ubuntu1.1 [200 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libc-bin arm64 2.38-1ubuntu6.1 [590 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 xserver-common all 2:21.1.7-3ubuntu2.7 [33.1 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 xserver-xorg-legacy arm64 2:21.1.7-3ubuntu2.7 [39.9 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-dev all 253.5-1ubuntu6.1 [79.5 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-timesyncd arm64 253.5-1ubuntu6.1 [33.5 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-resolved arm64 253.5-1ubuntu6.1 [279 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-oomd arm64 253.5-1ubuntu6.1 [39.0 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libsystemd-shared arm64 253.5-1ubuntu6.1 [1,789 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libsystemd0 arm64 253.5-1ubuntu6.1 [397 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 xserver-xorg-core arm64 2:21.1.7-3ubuntu2.7 [1,437 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-sysv arm64 253.5-1ubuntu6.1 [11.5 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libnss-systemd arm64 253.5-1ubuntu6.1 [139 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libpam-systemd arm64 253.5-1ubuntu6.1 [208 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd arm64 253.5-1ubuntu6.1 [2,966 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 udev arm64 253.5-1ubuntu6.1 [1,705 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libudev1 arm64 253.5-1ubuntu6.1 [158 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgl1-mesa-dri arm64 23.2.1-1ubuntu3.1 [8,125 kB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libglx-mesa0 arm64 23.2.1-1ubuntu3.1 [162 kB]
+Get:24 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libegl-mesa0 arm64 23.2.1-1ubuntu3.1 [114 kB]
+Get:25 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libglapi-mesa arm64 23.2.1-1ubuntu3.1 [54.6 kB]
+Get:26 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgbm1 arm64 23.2.1-1ubuntu3.1 [40.9 kB]
+Get:27 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libssl3 arm64 3.0.10-1ubuntu2.2 [1,773 kB]
+Get:28 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 passwd arm64 1:4.13+dfsg1-1ubuntu1.1 [838 kB]
+Get:29 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 distro-info-data all 0.58ubuntu0.2 [6,280 B]
+Get:30 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 distro-info arm64 1.5ubuntu0.23.10.1 [18.5 kB]
+Get:31 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 python3-netplan arm64 0.107-5ubuntu0.2 [20.6 kB]
+Get:32 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 netplan-generator arm64 0.107-5ubuntu0.2 [57.5 kB]
+Get:33 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 locales all 2.38-1ubuntu6.1 [4,239 kB]
+Get:34 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 tzdata all 2023d-0ubuntu0.23.10 [274 kB]
+Get:35 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-advantage-tools arm64 30~23.10 [219 kB]
+Get:36 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-minimal arm64 1.524.1 [9,992 B]
+Get:37 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 linux-firmware arm64 20230919.git3672ccab-0ubuntu2.5 [412 MB]
+Get:38 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 initramfs-tools all 0.142ubuntu15.1 [9,078 B]
+Get:39 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 initramfs-tools-core all 0.142ubuntu15.1 [49.7 kB]
+Get:40 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 initramfs-tools-bin arm64 0.142ubuntu15.1 [21.8 kB]
+Get:41 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 netplan.io arm64 0.107-5ubuntu0.2 [54.3 kB]
+Get:42 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libnetplan0 arm64 0.107-5ubuntu0.2 [115 kB]
+Get:43 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 openssl arm64 3.0.10-1ubuntu2.2 [1,168 kB]
+Get:44 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 systemd-hwe-hwdb all 253.5.3 [3,262 B]
+Get:45 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 tzdata-icu all 2023d-0ubuntu0.23.10 [136 kB]
+Get:46 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-pro-client-l10n arm64 30~23.10 [19.4 kB]
+Get:47 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 bind9-host arm64 1:9.18.18-0ubuntu2.1 [50.0 kB]
+Get:48 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 bind9-dnsutils arm64 1:9.18.18-0ubuntu2.1 [155 kB]
+Get:49 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 bind9-libs arm64 1:9.18.18-0ubuntu2.1 [1,192 kB]
+Get:50 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 python3-distro-info all 1.5ubuntu0.23.10.1 [6,868 B]
+Get:51 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-webkit2-4.1 arm64 2.42.5-0ubuntu0.23.10.2 [103 kB]
+Get:52 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libwebkit2gtk-4.1-0 arm64 2.42.5-0ubuntu0.23.10.2 [21.5 MB]
+Get:53 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-javascriptcoregtk-4.1 arm64 2.42.5-0ubuntu0.23.10.2 [37.4 kB]
+Get:54 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libjavascriptcoregtk-4.1-0 arm64 2.42.5-0ubuntu0.23.10.2 [7,905 kB]
+Get:55 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-release-upgrader-gtk all 1:23.10.14 [9,058 B]
+Get:56 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-release-upgrader-core all 1:23.10.14 [25.6 kB]
+Get:57 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 python3-distupgrade all 1:23.10.14 [118 kB]
+Get:58 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-standard arm64 1.524.1 [9,990 B]
+Get:59 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 alsa-ucm-conf all 1.2.9-1ubuntu3.2 [60.6 kB]
+Get:60 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 dns-root-data all 2023112702~ubuntu0.23.10.1 [4,248 B]
+Get:61 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 firmware-sof-signed all 2.2.6-1ubuntu1.3 [4,050 kB]
+Get:62 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 flash-kernel arm64 3.107ubuntu2.1 [48.3 kB]
+Get:63 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 fonts-noto-color-emoji all 2.042-0ubuntu0.23.10.1 [9,943 kB]
+Get:64 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-mutter-13 arm64 45.2-0ubuntu3 [130 kB]
+Get:65 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 mutter-common all 45.2-0ubuntu3 [46.1 kB]
+Get:66 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libmutter-13-0 arm64 45.2-0ubuntu3 [1,348 kB]
+Get:67 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 mutter-common-bin arm64 45.2-0ubuntu3 [49.4 kB]
+Get:68 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libtiff6 arm64 4.5.1+git230720-1ubuntu1.1 [191 kB]
+Get:69 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgtk-4-common all 4.12.3+ds-1ubuntu0.1 [666 kB]
+Get:70 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgtk-4-1 arm64 4.12.3+ds-1ubuntu0.1 [2,724 kB]
+Get:71 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-gtk-4.0 arm64 4.12.3+ds-1ubuntu0.1 [217 kB]
+Get:72 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-webkit-6.0 arm64 2.42.5-0ubuntu0.23.10.2 [66.1 kB]
+Get:73 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-javascriptcoregtk-6.0 arm64 2.42.5-0ubuntu0.23.10.2 [37.3 kB]
+Get:74 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libwebkitgtk-6.0-4 arm64 2.42.5-0ubuntu0.23.10.2 [21.2 MB]
+Get:75 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libjavascriptcoregtk-6.0-1 arm64 2.42.5-0ubuntu0.23.10.2 [7,906 kB]
+Get:76 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 network-manager arm64 1.44.2-1ubuntu1.2 [2,236 kB]
+Get:77 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libnm0 arm64 1.44.2-1ubuntu1.2 [471 kB]
+Get:78 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gir1.2-nm-1.0 arm64 1.44.2-1ubuntu1.2 [85.2 kB]
+Get:79 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gnome-characters arm64 45.0-1ubuntu1 [420 kB]
+Get:80 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gnome-shell arm64 45.2-0ubuntu1 [912 kB]
+Get:81 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gnome-shell-common all 45.2-0ubuntu1 [224 kB]
+Get:82 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gnome-shell-extension-desktop-icons-ng all 46+really47.0.7-0ubuntu1 [65.6 kB]
+Get:83 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 gnome-shell-extension-ubuntu-dock all 87ubuntu2 [117 kB]
+Get:84 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgtk-4-bin arm64 4.12.3+ds-1ubuntu0.1 [605 kB]
+Get:85 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libgtk-4-media-gstreamer arm64 4.12.3+ds-1ubuntu0.1 [64.3 kB]
+Get:86 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libqpdf29 arm64 11.5.0-1ubuntu1 [729 kB]
+Get:87 http://ports.ubuntu.com/ubuntu-ports mantic/main arm64 libqrtr1 arm64 1.0-2ubuntu1 [10.3 kB]
+Get:88 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 librbd1 arm64 18.2.0-0ubuntu3.1 [3,525 kB]
+Get:89 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 librados2 arm64 18.2.0-0ubuntu3.1 [3,657 kB]
+Get:90 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libsgutils2-1.46-2 arm64 1.46-3ubuntu2.1 [92.4 kB]
+Get:91 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 udisks2 arm64 2.10.1-1ubuntu1.1 [290 kB]
+Get:92 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 libudisks2-0 arm64 2.10.1-1ubuntu1.1 [172 kB]
+Get:93 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 linux-modules-6.5.0-1010-raspi arm64 6.5.0-1010.13 [59.5 MB]
+Get:94 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 linux-image-6.5.0-1010-raspi arm64 6.5.0-1010.13 [10.3 MB]
+Get:95 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 linux-image-raspi arm64 6.5.0.1010.11 [5,706 B]
+Get:96 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 mesa-vulkan-drivers arm64 23.2.1-1ubuntu3.1 [5,597 kB]
+Get:97 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 network-manager-config-connectivity-ubuntu all 1.44.2-1ubuntu1.2 [2,246 B]
+Get:98 http://ports.ubuntu.com/ubuntu-ports mantic/main arm64 qrtr-tools arm64 1.0-2ubuntu1 [16.7 kB]
+Get:99 http://ports.ubuntu.com/ubuntu-ports mantic/main arm64 protection-domain-mapper arm64 1.0-4ubuntu2 [11.3 kB]
+Get:100 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 python3-paramiko all 2.12.0-2ubuntu1.23.10.2 [137 kB]
+Get:101 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 python3-pil arm64 10.0.0-1ubuntu0.1 [427 kB]
+Get:102 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 snapd arm64 2.60.4+23.10.1 [24.2 MB]
+Get:103 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 unzip arm64 6.0-28ubuntu1.1 [170 kB]
+Get:104 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-desktop-minimal arm64 1.524.1 [10.8 kB]
+Get:105 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-desktop arm64 1.524.1 [2,516 B]
+Get:106 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 ubuntu-desktop-raspi arm64 1.524.1 [1,888 B]
+Get:107 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 xserver-xephyr arm64 2:21.1.7-3ubuntu2.7 [993 kB]
+Fetched 648 MB in 1min 46s (6,125 kB/s)
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+setting xserver-xorg-legacy/xwrapper/allowed_users from configuration file
+(Reading database ... 129503 files and directories currently installed.)
+Preparing to unpack .../libc6-dbg_2.38-1ubuntu6.1_arm64.deb ...
+Unpacking libc6-dbg:arm64 (2.38-1ubuntu6.1) over (2.38-1ubuntu6) ...
+Preparing to unpack .../libc6_2.38-1ubuntu6.1_arm64.deb ...
+Unpacking libc6:arm64 (2.38-1ubuntu6.1) over (2.38-1ubuntu6) ...
+Setting up libc6:arm64 (2.38-1ubuntu6.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../base-files_13ubuntu2.1_arm64.deb ...
+Unpacking base-files (13ubuntu2.1) over (13ubuntu2) ...
+Setting up base-files (13ubuntu2.1) ...
+Installing new version of config file /etc/update-motd.d/10-help-text ...
+motd-news.service is a disabled or a static unit not running, not starting it.
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../coreutils_9.1-1ubuntu2.23.10.1_arm64.deb ...
+Unpacking coreutils (9.1-1ubuntu2.23.10.1) over (9.1-1ubuntu2) ...
+Setting up coreutils (9.1-1ubuntu2.23.10.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../login_1%3a4.13+dfsg1-1ubuntu1.1_arm64.deb ...
+Unpacking login (1:4.13+dfsg1-1ubuntu1.1) over (1:4.13+dfsg1-1ubuntu1) ...
+Setting up login (1:4.13+dfsg1-1ubuntu1.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../libc-bin_2.38-1ubuntu6.1_arm64.deb ...
+Unpacking libc-bin (2.38-1ubuntu6.1) over (2.38-1ubuntu6) ...
+Setting up libc-bin (2.38-1ubuntu6.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../libpam0g_1.5.2-6ubuntu1.1_arm64.deb ...
+Unpacking libpam0g:arm64 (1.5.2-6ubuntu1.1) over (1.5.2-6ubuntu1) ...
+Setting up libpam0g:arm64 (1.5.2-6ubuntu1.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../libpam-modules-bin_1.5.2-6ubuntu1.1_arm64.deb ...
+Unpacking libpam-modules-bin (1.5.2-6ubuntu1.1) over (1.5.2-6ubuntu1) ...
+Setting up libpam-modules-bin (1.5.2-6ubuntu1.1) ...
+pam_namespace.service is a disabled or a static unit not running, not starting it.
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../libpam-modules_1.5.2-6ubuntu1.1_arm64.deb ...
+Unpacking libpam-modules:arm64 (1.5.2-6ubuntu1.1) over (1.5.2-6ubuntu1) ...
+Setting up libpam-modules:arm64 (1.5.2-6ubuntu1.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../0-xserver-common_2%3a21.1.7-3ubuntu2.7_all.deb ...
+Unpacking xserver-common (2:21.1.7-3ubuntu2.7) over (2:21.1.7-3ubuntu2.4) ...
+Preparing to unpack .../1-xserver-xorg-legacy_2%3a21.1.7-3ubuntu2.7_arm64.deb ...
+Unpacking xserver-xorg-legacy (2:21.1.7-3ubuntu2.7) over (2:21.1.7-3ubuntu2.4) ...
+Preparing to unpack .../2-systemd-dev_253.5-1ubuntu6.1_all.deb ...
+Unpacking systemd-dev (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../3-systemd-timesyncd_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking systemd-timesyncd (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../4-systemd-resolved_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking systemd-resolved (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../5-systemd-oomd_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking systemd-oomd (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../6-libsystemd-shared_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking libsystemd-shared:arm64 (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../7-libsystemd0_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking libsystemd0:arm64 (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Setting up libsystemd0:arm64 (253.5-1ubuntu6.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../0-xserver-xorg-core_2%3a21.1.7-3ubuntu2.7_arm64.deb ...
+Unpacking xserver-xorg-core (2:21.1.7-3ubuntu2.7) over (2:21.1.7-3ubuntu2.4) ...
+Preparing to unpack .../1-systemd-sysv_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking systemd-sysv (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../2-libnss-systemd_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking libnss-systemd:arm64 (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../3-libpam-systemd_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking libpam-systemd:arm64 (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../4-systemd_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking systemd (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../5-udev_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking udev (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Preparing to unpack .../6-libudev1_253.5-1ubuntu6.1_arm64.deb ...
+Unpacking libudev1:arm64 (253.5-1ubuntu6.1) over (253.5-1ubuntu6) ...
+Setting up libudev1:arm64 (253.5-1ubuntu6.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../0-libgl1-mesa-dri_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking libgl1-mesa-dri:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../1-libglx-mesa0_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking libglx-mesa0:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../2-libegl-mesa0_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking libegl-mesa0:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../3-libglapi-mesa_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking libglapi-mesa:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../4-libgbm1_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking libgbm1:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../5-libssl3_3.0.10-1ubuntu2.2_arm64.deb ...
+Unpacking libssl3:arm64 (3.0.10-1ubuntu2.2) over (3.0.10-1ubuntu2.1) ...
+Preparing to unpack .../6-libpam-runtime_1.5.2-6ubuntu1.1_all.deb ...
+Unpacking libpam-runtime (1.5.2-6ubuntu1.1) over (1.5.2-6ubuntu1) ...
+Setting up libpam-runtime (1.5.2-6ubuntu1.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../passwd_1%3a4.13+dfsg1-1ubuntu1.1_arm64.deb ...
+Unpacking passwd (1:4.13+dfsg1-1ubuntu1.1) over (1:4.13+dfsg1-1ubuntu1) ...
+Setting up passwd (1:4.13+dfsg1-1ubuntu1.1) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../libgnutls30_3.8.1-4ubuntu1.2_arm64.deb ...
+Unpacking libgnutls30:arm64 (3.8.1-4ubuntu1.2) over (3.8.1-4ubuntu1.1) ...
+Setting up libgnutls30:arm64 (3.8.1-4ubuntu1.2) ...
+(Reading database ... 129497 files and directories currently installed.)
+Preparing to unpack .../00-distro-info-data_0.58ubuntu0.2_all.deb ...
+Unpacking distro-info-data (0.58ubuntu0.2) over (0.58) ...
+Preparing to unpack .../01-distro-info_1.5ubuntu0.23.10.1_arm64.deb ...
+Unpacking distro-info (1.5ubuntu0.23.10.1) over (1.5) ...
+Preparing to unpack .../02-python3-netplan_0.107-5ubuntu0.2_arm64.deb ...
+Unpacking python3-netplan (0.107-5ubuntu0.2) over (0.107-5) ...
+Preparing to unpack .../03-netplan-generator_0.107-5ubuntu0.2_arm64.deb ...
+Unpacking netplan-generator (0.107-5ubuntu0.2) over (0.107-5) ...
+Preparing to unpack .../04-locales_2.38-1ubuntu6.1_all.deb ...
+Unpacking locales (2.38-1ubuntu6.1) over (2.38-1ubuntu6) ...
+Preparing to unpack .../05-tzdata_2023d-0ubuntu0.23.10_all.deb ...
+Unpacking tzdata (2023d-0ubuntu0.23.10) over (2023c-9ubuntu1) ...
+Preparing to unpack .../06-ubuntu-advantage-tools_30~23.10_arm64.deb ...
+Unpacking ubuntu-advantage-tools (30~23.10) over (29.4) ...
+Preparing to unpack .../07-ubuntu-minimal_1.524.1_arm64.deb ...
+Unpacking ubuntu-minimal (1.524.1) over (1.524) ...
+Preparing to unpack .../08-linux-firmware_20230919.git3672ccab-0ubuntu2.5_arm64.deb ...
+Unpacking linux-firmware (20230919.git3672ccab-0ubuntu2.5) over (20230919.git3672ccab-0ubuntu2.1) ...
+Preparing to unpack .../09-initramfs-tools_0.142ubuntu15.1_all.deb ...
+Unpacking initramfs-tools (0.142ubuntu15.1) over (0.142ubuntu15) ...
+Preparing to unpack .../10-initramfs-tools-core_0.142ubuntu15.1_all.deb ...
+Unpacking initramfs-tools-core (0.142ubuntu15.1) over (0.142ubuntu15) ...
+Preparing to unpack .../11-initramfs-tools-bin_0.142ubuntu15.1_arm64.deb ...
+Unpacking initramfs-tools-bin (0.142ubuntu15.1) over (0.142ubuntu15) ...
+Preparing to unpack .../12-netplan.io_0.107-5ubuntu0.2_arm64.deb ...
+Unpacking netplan.io (0.107-5ubuntu0.2) over (0.107-5) ...
+Preparing to unpack .../13-libnetplan0_0.107-5ubuntu0.2_arm64.deb ...
+Unpacking libnetplan0:arm64 (0.107-5ubuntu0.2) over (0.107-5) ...
+Preparing to unpack .../14-openssl_3.0.10-1ubuntu2.2_arm64.deb ...
+Unpacking openssl (3.0.10-1ubuntu2.2) over (3.0.10-1ubuntu2.1) ...
+Preparing to unpack .../15-systemd-hwe-hwdb_253.5.3_all.deb ...
+Unpacking systemd-hwe-hwdb (253.5.3) over (253.5.1) ...
+Preparing to unpack .../16-tzdata-icu_2023d-0ubuntu0.23.10_all.deb ...
+Unpacking tzdata-icu (2023d-0ubuntu0.23.10) over (2023c-9ubuntu1) ...
+Selecting previously unselected package ubuntu-pro-client-l10n.
+Preparing to unpack .../17-ubuntu-pro-client-l10n_30~23.10_arm64.deb ...
+Unpacking ubuntu-pro-client-l10n (30~23.10) ...
+Preparing to unpack .../18-bind9-host_1%3a9.18.18-0ubuntu2.1_arm64.deb ...
+Unpacking bind9-host (1:9.18.18-0ubuntu2.1) over (1:9.18.18-0ubuntu2) ...
+Preparing to unpack .../19-bind9-dnsutils_1%3a9.18.18-0ubuntu2.1_arm64.deb ...
+Unpacking bind9-dnsutils (1:9.18.18-0ubuntu2.1) over (1:9.18.18-0ubuntu2) ...
+Preparing to unpack .../20-bind9-libs_1%3a9.18.18-0ubuntu2.1_arm64.deb ...
+Unpacking bind9-libs:arm64 (1:9.18.18-0ubuntu2.1) over (1:9.18.18-0ubuntu2) ...
+Preparing to unpack .../21-python3-distro-info_1.5ubuntu0.23.10.1_all.deb ...
+Unpacking python3-distro-info (1.5ubuntu0.23.10.1) over (1.5) ...
+Preparing to unpack .../22-gir1.2-webkit2-4.1_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking gir1.2-webkit2-4.1:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../23-libwebkit2gtk-4.1-0_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking libwebkit2gtk-4.1-0:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../24-gir1.2-javascriptcoregtk-4.1_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking gir1.2-javascriptcoregtk-4.1:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../25-libjavascriptcoregtk-4.1-0_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking libjavascriptcoregtk-4.1-0:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../26-ubuntu-release-upgrader-gtk_1%3a23.10.14_all.deb ...
+Unpacking ubuntu-release-upgrader-gtk (1:23.10.14) over (1:23.10.10) ...
+Preparing to unpack .../27-ubuntu-release-upgrader-core_1%3a23.10.14_all.deb ...
+Unpacking ubuntu-release-upgrader-core (1:23.10.14) over (1:23.10.10) ...
+Preparing to unpack .../28-python3-distupgrade_1%3a23.10.14_all.deb ...
+Unpacking python3-distupgrade (1:23.10.14) over (1:23.10.10) ...
+Preparing to unpack .../29-ubuntu-standard_1.524.1_arm64.deb ...
+Unpacking ubuntu-standard (1.524.1) over (1.524) ...
+Preparing to unpack .../30-alsa-ucm-conf_1.2.9-1ubuntu3.2_all.deb ...
+Unpacking alsa-ucm-conf (1.2.9-1ubuntu3.2) over (1.2.9-1ubuntu3) ...
+Preparing to unpack .../31-dns-root-data_2023112702~ubuntu0.23.10.1_all.deb ...
+Unpacking dns-root-data (2023112702~ubuntu0.23.10.1) over (2023010101) ...
+Preparing to unpack .../32-firmware-sof-signed_2.2.6-1ubuntu1.3_all.deb ...
+Unpacking firmware-sof-signed (2.2.6-1ubuntu1.3) over (2.2.6-1ubuntu1) ...
+Preparing to unpack .../33-flash-kernel_3.107ubuntu2.1_arm64.deb ...
+Unpacking flash-kernel (3.107ubuntu2.1) over (3.107ubuntu2) ...
+Preparing to unpack .../34-fonts-noto-color-emoji_2.042-0ubuntu0.23.10.1_all.deb ...
+Unpacking fonts-noto-color-emoji (2.042-0ubuntu0.23.10.1) over (2.038-1) ...
+Preparing to unpack .../35-gir1.2-mutter-13_45.2-0ubuntu3_arm64.deb ...
+Unpacking gir1.2-mutter-13:arm64 (45.2-0ubuntu3) over (45.0-3ubuntu3) ...
+Preparing to unpack .../36-mutter-common_45.2-0ubuntu3_all.deb ...
+Unpacking mutter-common (45.2-0ubuntu3) over (45.0-3ubuntu3) ...
+Preparing to unpack .../37-libmutter-13-0_45.2-0ubuntu3_arm64.deb ...
+Unpacking libmutter-13-0:arm64 (45.2-0ubuntu3) over (45.0-3ubuntu3) ...
+Preparing to unpack .../38-mutter-common-bin_45.2-0ubuntu3_arm64.deb ...
+Unpacking mutter-common-bin (45.2-0ubuntu3) over (45.0-3ubuntu3) ...
+Preparing to unpack .../39-libtiff6_4.5.1+git230720-1ubuntu1.1_arm64.deb ...
+Unpacking libtiff6:arm64 (4.5.1+git230720-1ubuntu1.1) over (4.5.1+git230720-1ubuntu1) ...
+Preparing to unpack .../40-libgtk-4-common_4.12.3+ds-1ubuntu0.1_all.deb ...
+Unpacking libgtk-4-common (4.12.3+ds-1ubuntu0.1) over (4.12.2+ds-1ubuntu1) ...
+Preparing to unpack .../41-libgtk-4-1_4.12.3+ds-1ubuntu0.1_arm64.deb ...
+Unpacking libgtk-4-1:arm64 (4.12.3+ds-1ubuntu0.1) over (4.12.2+ds-1ubuntu1) ...
+Preparing to unpack .../42-gir1.2-gtk-4.0_4.12.3+ds-1ubuntu0.1_arm64.deb ...
+Unpacking gir1.2-gtk-4.0:arm64 (4.12.3+ds-1ubuntu0.1) over (4.12.2+ds-1ubuntu1) ...
+Preparing to unpack .../43-gir1.2-webkit-6.0_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking gir1.2-webkit-6.0:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../44-gir1.2-javascriptcoregtk-6.0_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking gir1.2-javascriptcoregtk-6.0:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../45-libwebkitgtk-6.0-4_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking libwebkitgtk-6.0-4:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../46-libjavascriptcoregtk-6.0-1_2.42.5-0ubuntu0.23.10.2_arm64.deb ...
+Unpacking libjavascriptcoregtk-6.0-1:arm64 (2.42.5-0ubuntu0.23.10.2) over (2.42.3-0ubuntu0.23.10.1) ...
+Preparing to unpack .../47-network-manager_1.44.2-1ubuntu1.2_arm64.deb ...
+Unpacking network-manager (1.44.2-1ubuntu1.2) over (1.44.2-1ubuntu1) ...
+Preparing to unpack .../48-libnm0_1.44.2-1ubuntu1.2_arm64.deb ...
+Unpacking libnm0:arm64 (1.44.2-1ubuntu1.2) over (1.44.2-1ubuntu1) ...
+Preparing to unpack .../49-gir1.2-nm-1.0_1.44.2-1ubuntu1.2_arm64.deb ...
+Unpacking gir1.2-nm-1.0:arm64 (1.44.2-1ubuntu1.2) over (1.44.2-1ubuntu1) ...
+Preparing to unpack .../50-gnome-characters_45.0-1ubuntu1_arm64.deb ...
+Unpacking gnome-characters (45.0-1ubuntu1) over (45.0-1) ...
+Preparing to unpack .../51-gnome-shell_45.2-0ubuntu1_arm64.deb ...
+Unpacking gnome-shell (45.2-0ubuntu1) over (45.0-1ubuntu2) ...
+Preparing to unpack .../52-gnome-shell-common_45.2-0ubuntu1_all.deb ...
+Unpacking gnome-shell-common (45.2-0ubuntu1) over (45.0-1ubuntu2) ...
+Preparing to unpack .../53-gnome-shell-extension-desktop-icons-ng_46+really47.0.7-0ubuntu1_all.deb ...
+Unpacking gnome-shell-extension-desktop-icons-ng (46+really47.0.7-0ubuntu1) over (46+really47.0.5-1) ...
+Preparing to unpack .../54-gnome-shell-extension-ubuntu-dock_87ubuntu2_all.deb ...
+Unpacking gnome-shell-extension-ubuntu-dock (87ubuntu2) over (87ubuntu1) ...
+Preparing to unpack .../55-ipp-usb_0.9.23-1ubuntu0.23.10.1_arm64.deb ...
+Unpacking ipp-usb (0.9.23-1ubuntu0.23.10.1) over (0.9.23-1build1) ...
+Preparing to unpack .../56-libgtk-4-bin_4.12.3+ds-1ubuntu0.1_arm64.deb ...
+Unpacking libgtk-4-bin (4.12.3+ds-1ubuntu0.1) over (4.12.2+ds-1ubuntu1) ...
+Preparing to unpack .../57-libgtk-4-media-gstreamer_4.12.3+ds-1ubuntu0.1_arm64.deb ...
+Unpacking libgtk-4-media-gstreamer (4.12.3+ds-1ubuntu0.1) over (4.12.2+ds-1ubuntu1) ...
+Preparing to unpack .../58-libqpdf29_11.5.0-1ubuntu1_arm64.deb ...
+Unpacking libqpdf29:arm64 (11.5.0-1ubuntu1) over (11.5.0-1) ...
+Selecting previously unselected package libqrtr1:arm64.
+Preparing to unpack .../59-libqrtr1_1.0-2ubuntu1_arm64.deb ...
+Unpacking libqrtr1:arm64 (1.0-2ubuntu1) ...
+Preparing to unpack .../60-librbd1_18.2.0-0ubuntu3.1_arm64.deb ...
+Unpacking librbd1 (18.2.0-0ubuntu3.1) over (18.2.0-0ubuntu3) ...
+Preparing to unpack .../61-librados2_18.2.0-0ubuntu3.1_arm64.deb ...
+Unpacking librados2 (18.2.0-0ubuntu3.1) over (18.2.0-0ubuntu3) ...
+Preparing to unpack .../62-libsgutils2-1.46-2_1.46-3ubuntu2.1_arm64.deb ...
+Unpacking libsgutils2-1.46-2:arm64 (1.46-3ubuntu2.1) over (1.46-3ubuntu2) ...
+Preparing to unpack .../63-libssh-4_0.10.5-3ubuntu1.2_arm64.deb ...
+Unpacking libssh-4:arm64 (0.10.5-3ubuntu1.2) over (0.10.5-3ubuntu1.1) ...
+Preparing to unpack .../64-libsysmetrics1_1.7.2ubuntu0.1_arm64.deb ...
+Unpacking libsysmetrics1:arm64 (1.7.2ubuntu0.1) over (1.7.2) ...
+Preparing to unpack .../65-udisks2_2.10.1-1ubuntu1.1_arm64.deb ...
+Unpacking udisks2 (2.10.1-1ubuntu1.1) over (2.10.1-1ubuntu1) ...
+Preparing to unpack .../66-libudisks2-0_2.10.1-1ubuntu1.1_arm64.deb ...
+Unpacking libudisks2-0:arm64 (2.10.1-1ubuntu1.1) over (2.10.1-1ubuntu1) ...
+Selecting previously unselected package linux-modules-6.5.0-1010-raspi.
+Preparing to unpack .../67-linux-modules-6.5.0-1010-raspi_6.5.0-1010.13_arm64.deb ...
+Unpacking linux-modules-6.5.0-1010-raspi (6.5.0-1010.13) ...
+Selecting previously unselected package linux-image-6.5.0-1010-raspi.
+Preparing to unpack .../68-linux-image-6.5.0-1010-raspi_6.5.0-1010.13_arm64.deb ...
+Unpacking linux-image-6.5.0-1010-raspi (6.5.0-1010.13) ...
+Preparing to unpack .../69-linux-image-raspi_6.5.0.1010.11_arm64.deb ...
+Unpacking linux-image-raspi (6.5.0.1010.11) over (6.5.0.1008.9) ...
+Preparing to unpack .../70-mesa-vulkan-drivers_23.2.1-1ubuntu3.1_arm64.deb ...
+Unpacking mesa-vulkan-drivers:arm64 (23.2.1-1ubuntu3.1) over (23.2.1-1ubuntu3) ...
+Preparing to unpack .../71-network-manager-config-connectivity-ubuntu_1.44.2-1ubuntu1.2_all.deb ...
+Unpacking network-manager-config-connectivity-ubuntu (1.44.2-1ubuntu1.2) over (1.44.2-1ubuntu1) ...
+Selecting previously unselected package qrtr-tools.
+Preparing to unpack .../72-qrtr-tools_1.0-2ubuntu1_arm64.deb ...
+Unpacking qrtr-tools (1.0-2ubuntu1) ...
+Selecting previously unselected package protection-domain-mapper.
+Preparing to unpack .../73-protection-domain-mapper_1.0-4ubuntu2_arm64.deb ...
+Unpacking protection-domain-mapper (1.0-4ubuntu2) ...
+Preparing to unpack .../74-python3-paramiko_2.12.0-2ubuntu1.23.10.2_all.deb ...
+Unpacking python3-paramiko (2.12.0-2ubuntu1.23.10.2) over (2.12.0-2ubuntu1) ...
+Preparing to unpack .../75-python3-pil_10.0.0-1ubuntu0.1_arm64.deb ...
+Unpacking python3-pil:arm64 (10.0.0-1ubuntu0.1) over (10.0.0-1) ...
+Preparing to unpack .../76-snapd_2.60.4+23.10.1_arm64.deb ...
+Unpacking snapd (2.60.4+23.10.1) over (2.60.4+23.10) ...
+Preparing to unpack .../77-unzip_6.0-28ubuntu1.1_arm64.deb ...
+Unpacking unzip (6.0-28ubuntu1.1) over (6.0-28ubuntu1) ...
+Preparing to unpack .../78-ubuntu-desktop-minimal_1.524.1_arm64.deb ...
+Unpacking ubuntu-desktop-minimal (1.524.1) over (1.524) ...
+Preparing to unpack .../79-ubuntu-desktop_1.524.1_arm64.deb ...
+Unpacking ubuntu-desktop (1.524.1) over (1.524) ...
+Preparing to unpack .../80-ubuntu-desktop-raspi_1.524.1_arm64.deb ...
+Unpacking ubuntu-desktop-raspi (1.524.1) over (1.524) ...
+Preparing to unpack .../81-ubuntu-report_1.7.2ubuntu0.1_arm64.deb ...
+Unpacking ubuntu-report (1.7.2ubuntu0.1) over (1.7.2) ...
+Preparing to unpack .../82-xserver-xephyr_2%3a21.1.7-3ubuntu2.7_arm64.deb ...
+Unpacking xserver-xephyr (2:21.1.7-3ubuntu2.7) over (2:21.1.7-3ubuntu2.4) ...
+Preparing to unpack .../83-xwayland_2%3a23.2.0-1ubuntu0.4_arm64.deb ...
+Unpacking xwayland (2:23.2.0-1ubuntu0.4) over (2:23.2.0-1ubuntu0.3) ...
+Setting up mesa-vulkan-drivers:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up ipp-usb (0.9.23-1ubuntu0.23.10.1) ...
+ipp-usb.service is a disabled or a static unit not running, not starting it.
+Setting up libgbm1:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up alsa-ucm-conf (1.2.9-1ubuntu3.2) ...
+Setting up fonts-noto-color-emoji (2.042-0ubuntu0.23.10.1) ...
+Setting up linux-firmware (20230919.git3672ccab-0ubuntu2.5) ...
+Setting up distro-info-data (0.58ubuntu0.2) ...
+Setting up firmware-sof-signed (2.2.6-1ubuntu1.3) ...
+Setting up unzip (6.0-28ubuntu1.1) ...
+Setting up libssl3:arm64 (3.0.10-1ubuntu2.2) ...
+Setting up libsgutils2-1.46-2:arm64 (1.46-3ubuntu2.1) ...
+Setting up libsysmetrics1:arm64 (1.7.2ubuntu0.1) ...
+Setting up libnetplan0:arm64 (0.107-5ubuntu0.2) ...
+Setting up gnome-shell-common (45.2-0ubuntu1) ...
+Setting up systemd-dev (253.5-1ubuntu6.1) ...
+Setting up locales (2.38-1ubuntu6.1) ...
+Generating locales (this might take a while)...
+  en_AG.UTF-8... done
+  en_AU.UTF-8... done
+  en_BW.UTF-8... done
+  en_CA.UTF-8... done
+  en_DK.UTF-8... done
+  en_GB.UTF-8... done
+  en_HK.UTF-8... done
+  en_IE.UTF-8... done
+  en_IL.UTF-8... done
+  en_IN.UTF-8... done
+  en_NG.UTF-8... done
+  en_NZ.UTF-8... done
+  en_PH.UTF-8... done
+  en_SG.UTF-8... done
+  en_US.ISO-8859-1... done
+  en_US.UTF-8... done
+  en_ZA.UTF-8... done
+  en_ZM.UTF-8... done
+  en_ZW.UTF-8... done
+Generation complete.
+Setting up libc6-dbg:arm64 (2.38-1ubuntu6.1) ...
+Setting up dns-root-data (2023112702~ubuntu0.23.10.1) ...
+Setting up tzdata (2023d-0ubuntu0.23.10) ...
+
+Current default time zone: 'America/New_York'
+Local time is now:      Wed Feb 21 02:06:55 EST 2024.
+Universal Time is now:  Wed Feb 21 07:06:55 UTC 2024.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Setting up mutter-common (45.2-0ubuntu3) ...
+Setting up libjavascriptcoregtk-4.1-0:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up qrtr-tools (1.0-2ubuntu1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/qrtr-ns.service → /lib/systemd/system/qrtr-ns.service.
+Setting up libjavascriptcoregtk-6.0-1:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up udev (253.5-1ubuntu6.1) ...
+Setting up libsystemd-shared:arm64 (253.5-1ubuntu6.1) ...
+Setting up libglapi-mesa:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up libnm0:arm64 (1.44.2-1ubuntu1.2) ...
+Setting up libssh-4:arm64 (0.10.5-3ubuntu1.2) ...
+Setting up systemd-hwe-hwdb (253.5.3) ...
+Setting up libqrtr1:arm64 (1.0-2ubuntu1) ...
+Setting up ubuntu-report (1.7.2ubuntu0.1) ...
+Setting up libtiff6:arm64 (4.5.1+git230720-1ubuntu1.1) ...
+Setting up python3-netplan (0.107-5ubuntu0.2) ...
+Setting up xserver-common (2:21.1.7-3ubuntu2.7) ...
+Setting up libgtk-4-common (4.12.3+ds-1ubuntu0.1) ...
+Setting up xwayland (2:23.2.0-1ubuntu0.4) ...
+Setting up python3-paramiko (2.12.0-2ubuntu1.23.10.2) ...
+Setting up gir1.2-nm-1.0:arm64 (1.44.2-1ubuntu1.2) ...
+Setting up openssl (3.0.10-1ubuntu2.2) ...
+Setting up xserver-xorg-legacy (2:21.1.7-3ubuntu2.7) ...
+setting xserver-xorg-legacy/xwrapper/allowed_users from configuration file
+Setting up python3-distro-info (1.5ubuntu0.23.10.1) ...
+Setting up libudisks2-0:arm64 (2.10.1-1ubuntu1.1) ...
+Setting up libqpdf29:arm64 (11.5.0-1ubuntu1) ...
+Setting up tzdata-icu (2023d-0ubuntu0.23.10) ...
+Setting up initramfs-tools-bin (0.142ubuntu15.1) ...
+Setting up distro-info (1.5ubuntu0.23.10.1) ...
+Setting up udisks2 (2.10.1-1ubuntu1.1) ...
+Setting up libwebkit2gtk-4.1-0:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up librados2 (18.2.0-0ubuntu3.1) ...
+Setting up protection-domain-mapper (1.0-4ubuntu2) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/pd-mapper.service → /lib/systemd/system/pd-mapper.service.
+Setting up bind9-libs:arm64 (1:9.18.18-0ubuntu2.1) ...
+Setting up libgl1-mesa-dri:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up xserver-xorg-core (2:21.1.7-3ubuntu2.7) ...
+Setting up gir1.2-javascriptcoregtk-6.0:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up systemd (253.5-1ubuntu6.1) ...
+Setting up python3-distupgrade (1:23.10.14) ...
+Setting up gir1.2-javascriptcoregtk-4.1:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up python3-pil:arm64 (10.0.0-1ubuntu0.1) ...
+Setting up libegl-mesa0:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up xserver-xephyr (2:21.1.7-3ubuntu2.7) ...
+Setting up systemd-timesyncd (253.5-1ubuntu6.1) ...
+Setting up ubuntu-release-upgrader-core (1:23.10.14) ...
+Setting up librbd1 (18.2.0-0ubuntu3.1) ...
+Setting up systemd-oomd (253.5-1ubuntu6.1) ...
+Setting up ubuntu-advantage-tools (30~23.10) ...
+Removing obsolete conffile /etc/ubuntu-advantage/help_data.yaml ...
+Setting up netplan-generator (0.107-5ubuntu0.2) ...
+Setting up initramfs-tools-core (0.142ubuntu15.1) ...
+Setting up bind9-host (1:9.18.18-0ubuntu2.1) ...
+Setting up systemd-resolved (253.5-1ubuntu6.1) ...
+Installing new version of config file /etc/systemd/resolved.conf ...
+Setting up ubuntu-pro-client-l10n (30~23.10) ...
+Setting up snapd (2.60.4+23.10.1) ...
+snapd.failure.service is a disabled or a static unit not running, not starting it.
+snapd.snap-repair.service is a disabled or a static unit not running, not starting it.
+Failed to restart snapd.mounts-pre.target: Operation refused, unit snapd.mounts-pre.target may be requested by dependency only (it is configured to refuse manual start/stop).
+See system logs and 'systemctl status snapd.mounts-pre.target' for details.
+Could not execute systemctl:  at /usr/bin/deb-systemd-invoke line 145.
+Setting up systemd-sysv (253.5-1ubuntu6.1) ...
+Setting up libglx-mesa0:arm64 (23.2.1-1ubuntu3.1) ...
+Setting up initramfs-tools (0.142ubuntu15.1) ...
+update-initramfs: deferring update (trigger activated)
+Setting up gir1.2-webkit2-4.1:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up libnss-systemd:arm64 (253.5-1ubuntu6.1) ...
+Setting up netplan.io (0.107-5ubuntu0.2) ...
+Setting up libpam-systemd:arm64 (253.5-1ubuntu6.1) ...
+Setting up ubuntu-release-upgrader-gtk (1:23.10.14) ...
+Setting up bind9-dnsutils (1:9.18.18-0ubuntu2.1) ...
+Setting up flash-kernel (3.107ubuntu2.1) ...
+Installing new version of config file /etc/flash-kernel/bootscript/bootscr.zynqmp ...
+Using DTB: bcm2711-rpi-4-b.dtb
+flash-kernel: deferring update (trigger activated)
+Setting up ubuntu-minimal (1.524.1) ...
+Setting up network-manager (1.44.2-1ubuntu1.2) ...
+Setting up ubuntu-standard (1.524.1) ...
+Setting up network-manager-config-connectivity-ubuntu (1.44.2-1ubuntu1.2) ...
+Setting up linux-image-6.5.0-1010-raspi (6.5.0-1010.13) ...
+I: /boot/vmlinuz.old is now a symlink to vmlinuz-6.5.0-1008-raspi
+I: /boot/initrd.img.old is now a symlink to initrd.img-6.5.0-1008-raspi
+I: /boot/vmlinuz is now a symlink to vmlinuz-6.5.0-1010-raspi
+I: /boot/initrd.img is now a symlink to initrd.img-6.5.0-1010-raspi
+Setting up linux-modules-6.5.0-1010-raspi (6.5.0-1010.13) ...
+Setting up linux-image-raspi (6.5.0.1010.11) ...
+Processing triggers for fontconfig (2.14.2-4ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu5) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for gnome-menus (3.36.0-1.1ubuntu1) ...
+Processing triggers for libglib2.0-0:arm64 (2.78.0-2) ...
+Processing triggers for libc-bin (2.38-1ubuntu6.1) ...
+Processing triggers for man-db (2.11.2-3) ...
+Processing triggers for cracklib-runtime (2.9.6-5build1) ...
+Processing triggers for plymouth-theme-ubuntu-text (22.02.122-3ubuntu2) ...
+update-initramfs: deferring update (trigger activated)
+Processing triggers for dbus (1.14.10-1ubuntu1) ...
+Setting up libgtk-4-1:arm64 (4.12.3+ds-1ubuntu0.1) ...
+Setting up libgtk-4-bin (4.12.3+ds-1ubuntu0.1) ...
+Processing triggers for install-info (7.0.3-2) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Setting up gir1.2-gtk-4.0:arm64 (4.12.3+ds-1ubuntu0.1) ...
+Setting up libwebkitgtk-6.0-4:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up mutter-common-bin (45.2-0ubuntu3) ...
+Setting up libgtk-4-media-gstreamer (4.12.3+ds-1ubuntu0.1) ...
+Setting up libmutter-13-0:arm64 (45.2-0ubuntu3) ...
+Setting up gir1.2-webkit-6.0:arm64 (2.42.5-0ubuntu0.23.10.2) ...
+Setting up gnome-characters (45.0-1ubuntu1) ...
+Setting up gir1.2-mutter-13:arm64 (45.2-0ubuntu3) ...
+Setting up gnome-shell (45.2-0ubuntu1) ...
+Setting up gnome-shell-extension-desktop-icons-ng (46+really47.0.7-0ubuntu1) ...
+Setting up gnome-shell-extension-ubuntu-dock (87ubuntu2) ...
+Setting up ubuntu-desktop-minimal (1.524.1) ...
+Setting up ubuntu-desktop (1.524.1) ...
+Setting up ubuntu-desktop-raspi (1.524.1) ...
+Processing triggers for initramfs-tools (0.142ubuntu15.1) ...
+update-initramfs: Generating /boot/initrd.img-6.5.0-1008-raspi
+Using DTB: bcm2711-rpi-4-b.dtb
+Installing /lib/firmware/6.5.0-1008-raspi/device-tree/broadcom/bcm2711-rpi-4-b.dtb into /boot/dtbs/6.5.0-1008-raspi/./bcm2711-rpi-4-b.dtb
+Taking backup of bcm2711-rpi-4-b.dtb.
+Installing new bcm2711-rpi-4-b.dtb.
+Ignoring old or unknown version 6.5.0-1008-raspi (latest is 6.5.0-1010-raspi)
+Processing triggers for flash-kernel (3.107ubuntu2.1) ...
+Using DTB: bcm2711-rpi-4-b.dtb
+Installing /lib/firmware/6.5.0-1010-raspi/device-tree/broadcom/bcm2711-rpi-4-b.dtb into /boot/dtbs/6.5.0-1010-raspi/./bcm2711-rpi-4-b.dtb
+Installing new bcm2711-rpi-4-b.dtb.
+flash-kernel: requested kernel 6.5.0-1010-raspi is in state triggers-pending.
+flash-kernel: quitting cleanly, anticipating a future run
+Processing triggers for linux-image-6.5.0-1010-raspi (6.5.0-1010.13) ...
+/etc/kernel/postinst.d/initramfs-tools:
+update-initramfs: Generating /boot/initrd.img-6.5.0-1010-raspi
+Using DTB: bcm2711-rpi-4-b.dtb
+Installing /lib/firmware/6.5.0-1010-raspi/device-tree/broadcom/bcm2711-rpi-4-b.dtb into /boot/dtbs/6.5.0-1010-raspi/./bcm2711-rpi-4-b.dtb
+Taking backup of bcm2711-rpi-4-b.dtb.
+Installing new bcm2711-rpi-4-b.dtb.
+flash-kernel: deferring update (trigger activated)
+/etc/kernel/postinst.d/zz-flash-kernel:
+Using DTB: bcm2711-rpi-4-b.dtb
+Installing /lib/firmware/6.5.0-1010-raspi/device-tree/broadcom/bcm2711-rpi-4-b.dtb into /boot/dtbs/6.5.0-1010-raspi/./bcm2711-rpi-4-b.dtb
+Taking backup of bcm2711-rpi-4-b.dtb.
+Installing new bcm2711-rpi-4-b.dtb.
+flash-kernel: deferring update (trigger activated)
+Processing triggers for libc-bin (2.38-1ubuntu6.1) ...
+Processing triggers for flash-kernel (3.107ubuntu2.1) ...
+Using DTB: bcm2711-rpi-4-b.dtb
+Installing /lib/firmware/6.5.0-1010-raspi/device-tree/broadcom/bcm2711-rpi-4-b.dtb into /boot/dtbs/6.5.0-1010-raspi/./bcm2711-rpi-4-b.dtb
+Taking backup of bcm2711-rpi-4-b.dtb.
+Installing new bcm2711-rpi-4-b.dtb.
+flash-kernel: installing version 6.5.0-1010-raspi
+Taking backup of vmlinuz.
+Installing new vmlinuz.
+Taking backup of initrd.img.
+Installing new initrd.img.
+Generating boot script u-boot image... done.
+Taking backup of boot.scr.
+Installing new boot.scr.
+Taking backup of fixup4.dat.
+Installing new fixup4.dat.
+Taking backup of start4cd.elf.
+Installing new start4cd.elf.
+Taking backup of fixup_x.dat.
+Installing new fixup_x.dat.
+Taking backup of fixup_cd.dat.
+Installing new fixup_cd.dat.
+Taking backup of start_x.elf.
+Installing new start_x.elf.
+Taking backup of start4db.elf.
+Installing new start4db.elf.
+Taking backup of fixup4x.dat.
+Installing new fixup4x.dat.
+Taking backup of start.elf.
+Installing new start.elf.
+Taking backup of start_db.elf.
+Installing new start_db.elf.
+Taking backup of fixup4db.dat.
+Installing new fixup4db.dat.
+Taking backup of fixup_db.dat.
+Installing new fixup_db.dat.
+Taking backup of start4x.elf.
+Installing new start4x.elf.
+Taking backup of fixup4cd.dat.
+Installing new fixup4cd.dat.
+Taking backup of bootcode.bin.
+Installing new bootcode.bin.
+Taking backup of start4.elf.
+Installing new start4.elf.
+Taking backup of fixup.dat.
+Installing new fixup.dat.
+Taking backup of start_cd.elf.
+Installing new start_cd.elf.
+Taking backup of bcm2711-rpi-cm4s.dtb.
+Installing new bcm2711-rpi-cm4s.dtb.
+Taking backup of bcm2710-rpi-zero-2.dtb.
+Installing new bcm2710-rpi-zero-2.dtb.
+Taking backup of bcm2710-rpi-3-b-plus.dtb.
+Installing new bcm2710-rpi-3-b-plus.dtb.
+Taking backup of bcm2710-rpi-2-b.dtb.
+Installing new bcm2710-rpi-2-b.dtb.
+Taking backup of bcm2710-rpi-cm3.dtb.
+Installing new bcm2710-rpi-cm3.dtb.
+Taking backup of bcm2710-rpi-3-b.dtb.
+Installing new bcm2710-rpi-3-b.dtb.
+Taking backup of bcm2710-rpi-zero-2-w.dtb.
+Installing new bcm2710-rpi-zero-2-w.dtb.
+Taking backup of bcm2711-rpi-400.dtb.
+Installing new bcm2711-rpi-400.dtb.
+Taking backup of bcm2711-rpi-4-b.dtb.
+Installing new bcm2711-rpi-4-b.dtb.
+Taking backup of hat_map.dtb.
+Installing new hat_map.dtb.
+Taking backup of bcm2712-rpi-5-b.dtb.
+Installing new bcm2712-rpi-5-b.dtb.
+Taking backup of bcm2711-rpi-cm4.dtb.
+Installing new bcm2711-rpi-cm4.dtb.
+Taking backup of ssd1306.dtbo.
+Installing new ssd1306.dtbo.
+Taking backup of i2c-fan.dtbo.
+Installing new i2c-fan.dtbo.
+Taking backup of iqaudio-digi-wm8804-audio.dtbo.
+Installing new iqaudio-digi-wm8804-audio.dtbo.
+Taking backup of spi3-2cs.dtbo.
+Installing new spi3-2cs.dtbo.
+Taking backup of qca7000.dtbo.
+Installing new qca7000.dtbo.
+Taking backup of disable-wifi-pi5.dtbo.
+Installing new disable-wifi-pi5.dtbo.
+Taking backup of dwc-otg.dtbo.
+Installing new dwc-otg.dtbo.
+Taking backup of hifiberry-dacplushd.dtbo.
+Installing new hifiberry-dacplushd.dtbo.
+Taking backup of apds9960.dtbo.
+Installing new apds9960.dtbo.
+Taking backup of imx477.dtbo.
+Installing new imx477.dtbo.
+Taking backup of adau1977-adc.dtbo.
+Installing new adau1977-adc.dtbo.
+Taking backup of uart2.dtbo.
+Installing new uart2.dtbo.
+Taking backup of i2c-rtc.dtbo.
+Installing new i2c-rtc.dtbo.
+Taking backup of rpi-backlight.dtbo.
+Installing new rpi-backlight.dtbo.
+Taking backup of rpi-dacpro.dtbo.
+Installing new rpi-dacpro.dtbo.
+Taking backup of at86rf233.dtbo.
+Installing new at86rf233.dtbo.
+Taking backup of piglow.dtbo.
+Installing new piglow.dtbo.
+Taking backup of mipi-dbi-spi.dtbo.
+Installing new mipi-dbi-spi.dtbo.
+Taking backup of adafruit-st7735r.dtbo.
+Installing new adafruit-st7735r.dtbo.
+Taking backup of dacberry400.dtbo.
+Installing new dacberry400.dtbo.
+Taking backup of midi-uart3-pi5.dtbo.
+Installing new midi-uart3-pi5.dtbo.
+Taking backup of tc358743-audio.dtbo.
+Installing new tc358743-audio.dtbo.
+Taking backup of allo-boss2-dac-audio.dtbo.
+Installing new allo-boss2-dac-audio.dtbo.
+Taking backup of pibell.dtbo.
+Installing new pibell.dtbo.
+Taking backup of midi-uart2.dtbo.
+Installing new midi-uart2.dtbo.
+Taking backup of upstream.dtbo.
+Installing new upstream.dtbo.
+Taking backup of i2c3.dtbo.
+Installing new i2c3.dtbo.
+Taking backup of w1-gpio-pullup.dtbo.
+Installing new w1-gpio-pullup.dtbo.
+Taking backup of ramoops.dtbo.
+Installing new ramoops.dtbo.
+Taking backup of irs1125.dtbo.
+Installing new irs1125.dtbo.
+Taking backup of uart4-pi5.dtbo.
+Installing new uart4-pi5.dtbo.
+Taking backup of hifiberry-dacplus.dtbo.
+Installing new hifiberry-dacplus.dtbo.
+Taking backup of pifi-dac-hd.dtbo.
+Installing new pifi-dac-hd.dtbo.
+Taking backup of i2c1-pi5.dtbo.
+Installing new i2c1-pi5.dtbo.
+Taking backup of vc4-kms-vga666.dtbo.
+Installing new vc4-kms-vga666.dtbo.
+Taking backup of goodix.dtbo.
+Installing new goodix.dtbo.
+Taking backup of audioinjector-bare-i2s.dtbo.
+Installing new audioinjector-bare-i2s.dtbo.
+Taking backup of sdio.dtbo.
+Installing new sdio.dtbo.
+Taking backup of pwm1.dtbo.
+Installing new pwm1.dtbo.
+Taking backup of hdmi-backlight-hwhack-gpio.dtbo.
+Installing new hdmi-backlight-hwhack-gpio.dtbo.
+Taking backup of adafruit18.dtbo.
+Installing new adafruit18.dtbo.
+Taking backup of akkordion-iqdacplus.dtbo.
+Installing new akkordion-iqdacplus.dtbo.
+Taking backup of vc4-kms-dsi-7inch.dtbo.
+Installing new vc4-kms-dsi-7inch.dtbo.
+Taking backup of pitft28-resistive.dtbo.
+Installing new pitft28-resistive.dtbo.
+Taking backup of rpi-dacplus.dtbo.
+Installing new rpi-dacplus.dtbo.
+Taking backup of pifi-dac-zero.dtbo.
+Installing new pifi-dac-zero.dtbo.
+Taking backup of ov7251.dtbo.
+Installing new ov7251.dtbo.
+Taking backup of vc4-kms-dsi-lt070me05000-v2.dtbo.
+Installing new vc4-kms-dsi-lt070me05000-v2.dtbo.
+Taking backup of spi5-1cs-pi5.dtbo.
+Installing new spi5-1cs-pi5.dtbo.
+Taking backup of miniuart-bt.dtbo.
+Installing new miniuart-bt.dtbo.
+Taking backup of midi-uart2-pi5.dtbo.
+Installing new midi-uart2-pi5.dtbo.
+Taking backup of pwm-2chan.dtbo.
+Installing new pwm-2chan.dtbo.
+Taking backup of justboom-digi.dtbo.
+Installing new justboom-digi.dtbo.
+Taking backup of uart1.dtbo.
+Installing new uart1.dtbo.
+Taking backup of mcp23s17.dtbo.
+Installing new mcp23s17.dtbo.
+Taking backup of midi-uart1-pi5.dtbo.
+Installing new midi-uart1-pi5.dtbo.
+Taking backup of applepi-dac.dtbo.
+Installing new applepi-dac.dtbo.
+Taking backup of waveshare-can-fd-hat-mode-a.dtbo.
+Installing new waveshare-can-fd-hat-mode-a.dtbo.
+Taking backup of dwc2.dtbo.
+Installing new dwc2.dtbo.
+Taking backup of jedec-spi-nor.dtbo.
+Installing new jedec-spi-nor.dtbo.
+Taking backup of i2c0-pi5.dtbo.
+Installing new i2c0-pi5.dtbo.
+Taking backup of i2c1.dtbo.
+Installing new i2c1.dtbo.
+Taking backup of iqs550.dtbo.
+Installing new iqs550.dtbo.
+Taking backup of proto-codec.dtbo.
+Installing new proto-codec.dtbo.
+Taking backup of wittypi.dtbo.
+Installing new wittypi.dtbo.
+Taking backup of hifiberry-dacplusdsp.dtbo.
+Installing new hifiberry-dacplusdsp.dtbo.
+Taking backup of rpi-tv.dtbo.
+Installing new rpi-tv.dtbo.
+Taking backup of enc28j60.dtbo.
+Installing new enc28j60.dtbo.
+Taking backup of spi2-2cs-pi5.dtbo.
+Installing new spi2-2cs-pi5.dtbo.
+Taking backup of mcp3008.dtbo.
+Installing new mcp3008.dtbo.
+Taking backup of pcie-32bit-dma.dtbo.
+Installing new pcie-32bit-dma.dtbo.
+Taking backup of watterott-display.dtbo.
+Installing new watterott-display.dtbo.
+Taking backup of hifiberry-dacplusadcpro.dtbo.
+Installing new hifiberry-dacplusadcpro.dtbo.
+Taking backup of imx327.dtbo.
+Installing new imx327.dtbo.
+Taking backup of minipitft13.dtbo.
+Installing new minipitft13.dtbo.
+Taking backup of ov2311.dtbo.
+Installing new ov2311.dtbo.
+Taking backup of imx378.dtbo.
+Installing new imx378.dtbo.
+Taking backup of justboom-dac.dtbo.
+Installing new justboom-dac.dtbo.
+Taking backup of i2c0.dtbo.
+Installing new i2c0.dtbo.
+Taking backup of uart2-pi5.dtbo.
+Installing new uart2-pi5.dtbo.
+Taking backup of midi-uart1.dtbo.
+Installing new midi-uart1.dtbo.
+Taking backup of hifiberry-amp.dtbo.
+Installing new hifiberry-amp.dtbo.
+Taking backup of smi-dev.dtbo.
+Installing new smi-dev.dtbo.
+Taking backup of ssd1331-spi.dtbo.
+Installing new ssd1331-spi.dtbo.
+Taking backup of gpio-fan.dtbo.
+Installing new gpio-fan.dtbo.
+Taking backup of fsm-demo.dtbo.
+Installing new fsm-demo.dtbo.
+Taking backup of hy28a.dtbo.
+Installing new hy28a.dtbo.
+Taking backup of hifiberry-amp3.dtbo.
+Installing new hifiberry-amp3.dtbo.
+Taking backup of waveshare-can-fd-hat-mode-b.dtbo.
+Installing new waveshare-can-fd-hat-mode-b.dtbo.
+Taking backup of cma.dtbo.
+Installing new cma.dtbo.
+Taking backup of w5500.dtbo.
+Installing new w5500.dtbo.
+Taking backup of disable-bt.dtbo.
+Installing new disable-bt.dtbo.
+Taking backup of i-sabre-q2m.dtbo.
+Installing new i-sabre-q2m.dtbo.
+Taking backup of pitft35-resistive.dtbo.
+Installing new pitft35-resistive.dtbo.
+Taking backup of camera-mux-2port.dtbo.
+Installing new camera-mux-2port.dtbo.
+Taking backup of gc9a01.dtbo.
+Installing new gc9a01.dtbo.
+Taking backup of spi-gpio35-39.dtbo.
+Installing new spi-gpio35-39.dtbo.
+Taking backup of allo-piano-dac-pcm512x-audio.dtbo.
+Installing new allo-piano-dac-pcm512x-audio.dtbo.
+Taking backup of vc4-fkms-v3d.dtbo.
+Installing new vc4-fkms-v3d.dtbo.
+Taking backup of uart1-pi5.dtbo.
+Installing new uart1-pi5.dtbo.
+Taking backup of spi-rtc.dtbo.
+Installing new spi-rtc.dtbo.
+Taking backup of i2c-bcm2708.dtbo.
+Installing new i2c-bcm2708.dtbo.
+Taking backup of pwm.dtbo.
+Installing new pwm.dtbo.
+Taking backup of audioinjector-isolated-soundcard.dtbo.
+Installing new audioinjector-isolated-soundcard.dtbo.
+Taking backup of media-center.dtbo.
+Installing new media-center.dtbo.
+Taking backup of i2c-rtc-gpio.dtbo.
+Installing new i2c-rtc-gpio.dtbo.
+Taking backup of uart0.dtbo.
+Installing new uart0.dtbo.
+Taking backup of max98357a.dtbo.
+Installing new max98357a.dtbo.
+Taking backup of merus-amp.dtbo.
+Installing new merus-amp.dtbo.
+Taking backup of hifiberry-amp100.dtbo.
+Installing new hifiberry-amp100.dtbo.
+Taking backup of spi1-2cs.dtbo.
+Installing new spi1-2cs.dtbo.
+Taking backup of googlevoicehat-soundcard.dtbo.
+Installing new googlevoicehat-soundcard.dtbo.
+Taking backup of dht11.dtbo.
+Installing new dht11.dtbo.
+Taking backup of imx296.dtbo.
+Installing new imx296.dtbo.
+Taking backup of disable-emmc2.dtbo.
+Installing new disable-emmc2.dtbo.
+Taking backup of spi5-2cs-pi5.dtbo.
+Installing new spi5-2cs-pi5.dtbo.
+Taking backup of gpio-led.dtbo.
+Installing new gpio-led.dtbo.
+Taking backup of audioinjector-ultra.dtbo.
+Installing new audioinjector-ultra.dtbo.
+Taking backup of vc4-kms-dpi-panel.dtbo.
+Installing new vc4-kms-dpi-panel.dtbo.
+Taking backup of sc16is752-spi0.dtbo.
+Installing new sc16is752-spi0.dtbo.
+Taking backup of pifi-mini-210.dtbo.
+Installing new pifi-mini-210.dtbo.
+Taking backup of wm8960-soundcard.dtbo.
+Installing new wm8960-soundcard.dtbo.
+Taking backup of si446x-spi0.dtbo.
+Installing new si446x-spi0.dtbo.
+Taking backup of uart0-pi5.dtbo.
+Installing new uart0-pi5.dtbo.
+Taking backup of cirrus-wm5102.dtbo.
+Installing new cirrus-wm5102.dtbo.
+Taking backup of mpu6050.dtbo.
+Installing new mpu6050.dtbo.
+Taking backup of smi.dtbo.
+Installing new smi.dtbo.
+Taking backup of tc358743.dtbo.
+Installing new tc358743.dtbo.
+Taking backup of mlx90640.dtbo.
+Installing new mlx90640.dtbo.
+Taking backup of fbtft.dtbo.
+Installing new fbtft.dtbo.
+Taking backup of uart3-pi5.dtbo.
+Installing new uart3-pi5.dtbo.
+Taking backup of gpio-hog.dtbo.
+Installing new gpio-hog.dtbo.
+Taking backup of spi1-3cs.dtbo.
+Installing new spi1-3cs.dtbo.
+Taking backup of hy28b.dtbo.
+Installing new hy28b.dtbo.
+Taking backup of audioinjector-wm8731-audio.dtbo.
+Installing new audioinjector-wm8731-audio.dtbo.
+Taking backup of midi-uart5.dtbo.
+Installing new midi-uart5.dtbo.
+Taking backup of midi-uart4-pi5.dtbo.
+Installing new midi-uart4-pi5.dtbo.
+Taking backup of i2s-dac.dtbo.
+Installing new i2s-dac.dtbo.
+Taking backup of gpio-no-bank0-irq.dtbo.
+Installing new gpio-no-bank0-irq.dtbo.
+Taking backup of spi2-1cs-pi5.dtbo.
+Installing new spi2-1cs-pi5.dtbo.
+Taking backup of ltc294x.dtbo.
+Installing new ltc294x.dtbo.
+Taking backup of spi2-3cs.dtbo.
+Installing new spi2-3cs.dtbo.
+Taking backup of audioinjector-addons.dtbo.
+Installing new audioinjector-addons.dtbo.
+Taking backup of arducam-pivariety.dtbo.
+Installing new arducam-pivariety.dtbo.
+Taking backup of spi0-0cs.dtbo.
+Installing new spi0-0cs.dtbo.
+Taking backup of spi5-1cs.dtbo.
+Installing new spi5-1cs.dtbo.
+Taking backup of sc16is752-spi1.dtbo.
+Installing new sc16is752-spi1.dtbo.
+Taking backup of maxtherm.dtbo.
+Installing new maxtherm.dtbo.
+Taking backup of papirus.dtbo.
+Installing new papirus.dtbo.
+Taking backup of midi-uart4.dtbo.
+Installing new midi-uart4.dtbo.
+Taking backup of spi2-1cs.dtbo.
+Installing new spi2-1cs.dtbo.
+Taking backup of pifacedigital.dtbo.
+Installing new pifacedigital.dtbo.
+Taking backup of gpio-charger.dtbo.
+Installing new gpio-charger.dtbo.
+Taking backup of gpio-no-irq.dtbo.
+Installing new gpio-no-irq.dtbo.
+Taking backup of exc3000.dtbo.
+Installing new exc3000.dtbo.
+Taking backup of pcf857x.dtbo.
+Installing new pcf857x.dtbo.
+Taking backup of gpio-ir.dtbo.
+Installing new gpio-ir.dtbo.
+Taking backup of mbed-dac.dtbo.
+Installing new mbed-dac.dtbo.
+Taking backup of uart3.dtbo.
+Installing new uart3.dtbo.
+Taking backup of piscreen2r.dtbo.
+Installing new piscreen2r.dtbo.
+Taking backup of imx519.dtbo.
+Installing new imx519.dtbo.
+Taking backup of imx708.dtbo.
+Installing new imx708.dtbo.
+Taking backup of cap1106.dtbo.
+Installing new cap1106.dtbo.
+Taking backup of gpio-poweroff.dtbo.
+Installing new gpio-poweroff.dtbo.
+Taking backup of camera-mux-4port.dtbo.
+Installing new camera-mux-4port.dtbo.
+Taking backup of uart4.dtbo.
+Installing new uart4.dtbo.
+Taking backup of vc4-kms-dpi-hyperpixel4sq.dtbo.
+Installing new vc4-kms-dpi-hyperpixel4sq.dtbo.
+Taking backup of dionaudio-loco-v2.dtbo.
+Installing new dionaudio-loco-v2.dtbo.
+Taking backup of adau7002-simple.dtbo.
+Installing new adau7002-simple.dtbo.
+Taking backup of mcp2515.dtbo.
+Installing new mcp2515.dtbo.
+Taking backup of arducam-64mp.dtbo.
+Installing new arducam-64mp.dtbo.
+Taking backup of iqaudio-codec.dtbo.
+Installing new iqaudio-codec.dtbo.
+Taking backup of spi2-2cs.dtbo.
+Installing new spi2-2cs.dtbo.
+Taking backup of overlay_map.dtb.
+Installing new overlay_map.dtb.
+Taking backup of allo-digione.dtbo.
+Installing new allo-digione.dtbo.
+Taking backup of i2c4.dtbo.
+Installing new i2c4.dtbo.
+Taking backup of spi3-1cs-pi5.dtbo.
+Installing new spi3-1cs-pi5.dtbo.
+Taking backup of hifiberry-digi-pro.dtbo.
+Installing new hifiberry-digi-pro.dtbo.
+Taking backup of ilitek251x.dtbo.
+Installing new ilitek251x.dtbo.
+Taking backup of vc4-kms-dpi-hyperpixel2r.dtbo.
+Installing new vc4-kms-dpi-hyperpixel2r.dtbo.
+Taking backup of balena-fin.dtbo.
+Installing new balena-fin.dtbo.
+Taking backup of iqaudio-dac.dtbo.
+Installing new iqaudio-dac.dtbo.
+Taking backup of i2s-gpio28-31.dtbo.
+Installing new i2s-gpio28-31.dtbo.
+Taking backup of spi4-2cs.dtbo.
+Installing new spi4-2cs.dtbo.
+Taking backup of pca953x.dtbo.
+Installing new pca953x.dtbo.
+Taking backup of piscreen.dtbo.
+Installing new piscreen.dtbo.
+Taking backup of audremap.dtbo.
+Installing new audremap.dtbo.
+Taking backup of vl805.dtbo.
+Installing new vl805.dtbo.
+Taking backup of sc16is752-i2c.dtbo.
+Installing new sc16is752-i2c.dtbo.
+Taking backup of uart5.dtbo.
+Installing new uart5.dtbo.
+Taking backup of spi3-2cs-pi5.dtbo.
+Installing new spi3-2cs-pi5.dtbo.
+Taking backup of smi-nand.dtbo.
+Installing new smi-nand.dtbo.
+Taking backup of ov9281.dtbo.
+Installing new ov9281.dtbo.
+Taking backup of spi6-2cs.dtbo.
+Installing new spi6-2cs.dtbo.
+Taking backup of draws.dtbo.
+Installing new draws.dtbo.
+Taking backup of i2c2-pi5.dtbo.
+Installing new i2c2-pi5.dtbo.
+Taking backup of hifiberry-dac.dtbo.
+Installing new hifiberry-dac.dtbo.
+Taking backup of i2c-gpio.dtbo.
+Installing new i2c-gpio.dtbo.
+Taking backup of mcp251xfd.dtbo.
+Installing new mcp251xfd.dtbo.
+Taking backup of allo-boss-dac-pcm512x-audio.dtbo.
+Installing new allo-boss-dac-pcm512x-audio.dtbo.
+Taking backup of spi3-1cs.dtbo.
+Installing new spi3-1cs.dtbo.
+Taking backup of pps-gpio.dtbo.
+Installing new pps-gpio.dtbo.
+Taking backup of mcp2515-can1.dtbo.
+Installing new mcp2515-can1.dtbo.
+Taking backup of udrc.dtbo.
+Installing new udrc.dtbo.
+Taking backup of audiosense-pi.dtbo.
+Installing new audiosense-pi.dtbo.
+Taking backup of imx219.dtbo.
+Installing new imx219.dtbo.
+Taking backup of act-led.dtbo.
+Installing new act-led.dtbo.
+Taking backup of rpi-codeczero.dtbo.
+Installing new rpi-codeczero.dtbo.
+Taking backup of hy28b-2017.dtbo.
+Installing new hy28b-2017.dtbo.
+Taking backup of spi0-1cs.dtbo.
+Installing new spi0-1cs.dtbo.
+Taking backup of pwm-ir-tx.dtbo.
+Installing new pwm-ir-tx.dtbo.
+Taking backup of dpi18cpadhi.dtbo.
+Installing new dpi18cpadhi.dtbo.
+Taking backup of imx258.dtbo.
+Installing new imx258.dtbo.
+Taking backup of hd44780-lcd.dtbo.
+Installing new hd44780-lcd.dtbo.
+Taking backup of mcp2515-can0.dtbo.
+Installing new mcp2515-can0.dtbo.
+Taking backup of spi5-2cs.dtbo.
+Installing new spi5-2cs.dtbo.
+Taking backup of mz61581.dtbo.
+Installing new mz61581.dtbo.
+Taking backup of sainsmart18.dtbo.
+Installing new sainsmart18.dtbo.
+Taking backup of qca7000-uart0.dtbo.
+Installing new qca7000-uart0.dtbo.
+Taking backup of superaudioboard.dtbo.
+Installing new superaudioboard.dtbo.
+Taking backup of vc4-fkms-v3d-pi4.dtbo.
+Installing new vc4-fkms-v3d-pi4.dtbo.
+Taking backup of dionaudio-kiwi.dtbo.
+Installing new dionaudio-kiwi.dtbo.
+Taking backup of i2c-pwm-pca9685a.dtbo.
+Installing new i2c-pwm-pca9685a.dtbo.
+Taking backup of mcp342x.dtbo.
+Installing new mcp342x.dtbo.
+Taking backup of hifiberry-digi.dtbo.
+Installing new hifiberry-digi.dtbo.
+Taking backup of ghost-amp.dtbo.
+Installing new ghost-amp.dtbo.
+Taking backup of rra-digidac1-wm8741-audio.dtbo.
+Installing new rra-digidac1-wm8741-audio.dtbo.
+Taking backup of ssd1306-spi.dtbo.
+Installing new ssd1306-spi.dtbo.
+Taking backup of ads7846.dtbo.
+Installing new ads7846.dtbo.
+Taking backup of allo-katana-dac-audio.dtbo.
+Installing new allo-katana-dac-audio.dtbo.
+Taking backup of vc4-kms-dsi-lt070me05000.dtbo.
+Installing new vc4-kms-dsi-lt070me05000.dtbo.
+Taking backup of adv7282m.dtbo.
+Installing new adv7282m.dtbo.
+Taking backup of adv728x-m.dtbo.
+Installing new adv728x-m.dtbo.
+Taking backup of sc16is750-i2c.dtbo.
+Installing new sc16is750-i2c.dtbo.
+Taking backup of pisound.dtbo.
+Installing new pisound.dtbo.
+Taking backup of ads1115.dtbo.
+Installing new ads1115.dtbo.
+Taking backup of rotary-encoder.dtbo.
+Installing new rotary-encoder.dtbo.
+Taking backup of chipdip-dac.dtbo.
+Installing new chipdip-dac.dtbo.
+Taking backup of gpio-ir-tx.dtbo.
+Installing new gpio-ir-tx.dtbo.
+Taking backup of hifiberry-dacplusadc.dtbo.
+Installing new hifiberry-dacplusadc.dtbo.
+Taking backup of spi0-2cs.dtbo.
+Installing new spi0-2cs.dtbo.
+Taking backup of enc28j60-spi2.dtbo.
+Installing new enc28j60-spi2.dtbo.
+Taking backup of tinylcd35.dtbo.
+Installing new tinylcd35.dtbo.
+Taking backup of vc4-kms-dpi-hyperpixel4.dtbo.
+Installing new vc4-kms-dpi-hyperpixel4.dtbo.
+Taking backup of i2c3-pi5.dtbo.
+Installing new i2c3-pi5.dtbo.
+Taking backup of imx462.dtbo.
+Installing new imx462.dtbo.
+Taking backup of rpi-ft5406.dtbo.
+Installing new rpi-ft5406.dtbo.
+Taking backup of mmc.dtbo.
+Installing new mmc.dtbo.
+Taking backup of pitft22.dtbo.
+Installing new pitft22.dtbo.
+Taking backup of justboom-both.dtbo.
+Installing new justboom-both.dtbo.
+Taking backup of anyspi.dtbo.
+Installing new anyspi.dtbo.
+Taking backup of midi-uart0.dtbo.
+Installing new midi-uart0.dtbo.
+Taking backup of spi6-1cs.dtbo.
+Installing new spi6-1cs.dtbo.
+Taking backup of spi-gpio40-45.dtbo.
+Installing new spi-gpio40-45.dtbo.
+Taking backup of edt-ft5406.dtbo.
+Installing new edt-ft5406.dtbo.
+Taking backup of highperi.dtbo.
+Installing new highperi.dtbo.
+Taking backup of w1-gpio.dtbo.
+Installing new w1-gpio.dtbo.
+Taking backup of seeed-can-fd-hat-v1.dtbo.
+Installing new seeed-can-fd-hat-v1.dtbo.
+Taking backup of tpm-slb9673.dtbo.
+Installing new tpm-slb9673.dtbo.
+Taking backup of i2c6.dtbo.
+Installing new i2c6.dtbo.
+Taking backup of vc4-kms-kippah-7inch.dtbo.
+Installing new vc4-kms-kippah-7inch.dtbo.
+Taking backup of ramoops-pi4.dtbo.
+Installing new ramoops-pi4.dtbo.
+Taking backup of sx150x.dtbo.
+Installing new sx150x.dtbo.
+Taking backup of pitft28-capacitive.dtbo.
+Installing new pitft28-capacitive.dtbo.
+Taking backup of mcp3202.dtbo.
+Installing new mcp3202.dtbo.
+Taking backup of upstream-pi4.dtbo.
+Installing new upstream-pi4.dtbo.
+Taking backup of rpi-digiampplus.dtbo.
+Installing new rpi-digiampplus.dtbo.
+Taking backup of ssd1351-spi.dtbo.
+Installing new ssd1351-spi.dtbo.
+Taking backup of dpi18.dtbo.
+Installing new dpi18.dtbo.
+Taking backup of rpi-sense.dtbo.
+Installing new rpi-sense.dtbo.
+Taking backup of vc4-kms-v3d-pi4.dtbo.
+Installing new vc4-kms-v3d-pi4.dtbo.
+Taking backup of gpio-shutdown.dtbo.
+Installing new gpio-shutdown.dtbo.
+Taking backup of fe-pi-audio.dtbo.
+Installing new fe-pi-audio.dtbo.
+Taking backup of gpio-key.dtbo.
+Installing new gpio-key.dtbo.
+Taking backup of sdhost.dtbo.
+Installing new sdhost.dtbo.
+Taking backup of spi1-1cs.dtbo.
+Installing new spi1-1cs.dtbo.
+Taking backup of vc4-kms-dpi-generic.dtbo.
+Installing new vc4-kms-dpi-generic.dtbo.
+Taking backup of rpi-sense-v2.dtbo.
+Installing new rpi-sense-v2.dtbo.
+Taking backup of midi-uart3.dtbo.
+Installing new midi-uart3.dtbo.
+Taking backup of mcp23017.dtbo.
+Installing new mcp23017.dtbo.
+Taking backup of i2c-sensor.dtbo.
+Installing new i2c-sensor.dtbo.
+Taking backup of vga666.dtbo.
+Installing new vga666.dtbo.
+Taking backup of vc4-kms-v3d-pi5.dtbo.
+Installing new vc4-kms-v3d-pi5.dtbo.
+Taking backup of ov5647.dtbo.
+Installing new ov5647.dtbo.
+Taking backup of crystalfontz-cfa050_pi_m.dtbo.
+Installing new crystalfontz-cfa050_pi_m.dtbo.
+Taking backup of dpi24.dtbo.
+Installing new dpi24.dtbo.
+Taking backup of rpi-poe.dtbo.
+Installing new rpi-poe.dtbo.
+Taking backup of spi4-1cs.dtbo.
+Installing new spi4-1cs.dtbo.
+Taking backup of disable-wifi.dtbo.
+Installing new disable-wifi.dtbo.
+Taking backup of disable-bt-pi5.dtbo.
+Installing new disable-bt-pi5.dtbo.
+Taking backup of ugreen-dabboard.dtbo.
+Installing new ugreen-dabboard.dtbo.
+Taking backup of imx290.dtbo.
+Installing new imx290.dtbo.
+Taking backup of i2c-mux.dtbo.
+Installing new i2c-mux.dtbo.
+Taking backup of allo-piano-dac-plus-pcm512x-audio.dtbo.
+Installing new allo-piano-dac-plus-pcm512x-audio.dtbo.
+Taking backup of cutiepi-panel.dtbo.
+Installing new cutiepi-panel.dtbo.
+Taking backup of dionaudio-loco.dtbo.
+Installing new dionaudio-loco.dtbo.
+Taking backup of sh1106-spi.dtbo.
+Installing new sh1106-spi.dtbo.
+Taking backup of vc4-kms-dsi-waveshare-panel.dtbo.
+Installing new vc4-kms-dsi-waveshare-panel.dtbo.
+Taking backup of pifi-40.dtbo.
+Installing new pifi-40.dtbo.
+Taking backup of seeed-can-fd-hat-v2.dtbo.
+Installing new seeed-can-fd-hat-v2.dtbo.
+Taking backup of iqaudio-dacplus.dtbo.
+Installing new iqaudio-dacplus.dtbo.
+Taking backup of vc4-kms-v3d.dtbo.
+Installing new vc4-kms-v3d.dtbo.
+Taking backup of i2c5.dtbo.
+Installing new i2c5.dtbo.
+Taking backup of rpi-poe-plus.dtbo.
+Installing new rpi-poe-plus.dtbo.
+Taking backup of tpm-slb9670.dtbo.
+Installing new tpm-slb9670.dtbo.
+Taking backup of midi-uart0-pi5.dtbo.
+Installing new midi-uart0-pi5.dtbo.
+Taking backup of cm-swap-i2c0.dtbo.
+Installing new cm-swap-i2c0.dtbo.
+Taking backup of ads1015.dtbo.
+Installing new ads1015.dtbo.
+Taking backup of README.
+Installing new README.
+jongo@jongo-desktop:~$ sudo apt install ros-humble-desktop
+[sudo] password for jongo:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package ros-humble-desktop
+jongo@jongo-desktop:~$
+
+
+#############################################################################################################
+#############################################################################################################
+#############################################################################################################
 jongo@jongo-desktop:~$ apt-cache policy | grep universe
  500 http://ports.ubuntu.com/ubuntu-ports mantic-security/universe arm64 Packages
      release v=23.10,o=Ubuntu,a=mantic-security,n=mantic,l=Ubuntu,c=universe,b=arm64
  500 http://ports.ubuntu.com/ubuntu-ports mantic-updates/universe arm64 Packages
      release v=23.10,o=Ubuntu,a=mantic-updates,n=mantic,l=Ubuntu,c=universe,b=arm64
  500 http://ports.ubuntu.com/ubuntu-ports mantic/universe arm64 Packages
-     release v=23.10,o=Ubuntu,a=mantic,n=mantic,l=Ubuntu,c=universe,b=arm64
+     release v=23.10,o=Ubuntu,a=mantic,n=mant
+ic,l=Ubuntu,c=universe,b=arm64
 jongo@jongo-desktop:~$ sudo apt install software-properties-common
 Reading package lists... Done
 Building dependency tree... Done
