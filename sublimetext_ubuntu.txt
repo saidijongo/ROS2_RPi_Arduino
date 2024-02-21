@@ -1,0 +1,69 @@
+jongo@jongo-desktop:~$ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+[sudo] password for jongo: 
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+jongo@jongo-desktop:~$ sudo apt-get install apt-transport-https
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 91 not upgraded.
+Need to get 3962 B of archives.
+After this operation, 36.9 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports mantic/universe arm64 apt-transport-https all 2.7.3 [3962 B]
+Fetched 3962 B in 2s (1656 B/s)                     
+Selecting previously unselected package apt-transport-https.
+(Reading database ... 129390 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.7.3_all.deb ...
+Unpacking apt-transport-https (2.7.3) ...
+Setting up apt-transport-https (2.7.3) ...
+jongo@jongo-desktop:~$ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+deb https://download.sublimetext.com/ apt/stable/
+jongo@jongo-desktop:~$ sudo apt-get update
+Hit:1 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease [109 kB]
+Get:3 https://download.sublimetext.com apt/stable/ InRelease [2536 B]          
+Get:4 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease [109 kB]
+Get:5 https://download.sublimetext.com apt/stable/ Packages [7987 B]
+Get:6 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main arm64 Packages [307 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports mantic-updates/main Translation-en [84.0 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports mantic-updates/restricted arm64 Packages [201 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports mantic-updates/restricted Translation-en [33.9 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports mantic-updates/universe arm64 Packages [281 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports mantic-updates/universe Translation-en [120 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports mantic-updates/multiverse arm64 Packages [4808 B]
+Get:13 http://ports.ubuntu.com/ubuntu-ports mantic-security/main arm64 Packages [256 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports mantic-security/main Translation-en [67.1 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports mantic-security/restricted arm64 Packages [194 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports mantic-security/restricted Translation-en [33.2 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports mantic-security/universe arm64 Packages [250 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports mantic-security/universe Translation-en [108 kB]
+Fetched 2167 kB in 6s (336 kB/s)                                               
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo-desktop:~$ sudo apt-get install sublime-text
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  sublime-text
+0 upgraded, 1 newly installed, 0 to remove and 113 not upgraded.
+Need to get 15.2 MB of archives.
+After this operation, 53.4 MB of additional disk space will be used.
+Get:1 https://download.sublimetext.com apt/stable/ sublime-text 4169 [15.2 MB]
+Fetched 15.2 MB in 5s (2874 kB/s)       
+Selecting previously unselected package sublime-text.
+(Reading database ... 129394 files and directories currently installed.)
+Preparing to unpack .../sublime-text_4169_arm64.deb ...
+Unpacking sublime-text (4169) ...
+Setting up sublime-text (4169) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu5) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for gnome-menus (3.36.0-1.1ubuntu1) ...
+jongo@jongo-desktop:~$ sublime-text
+sublime-text: command not found
+jongo@jongo-desktop:~$ /opt/sublime_text/sublime_text
+jongo@jongo-desktop:~$ sudo ln -s /opt/sublime_text/sublime_text /usr/local/bin/sublime-text
+jongo@jongo-desktop:~$ 
