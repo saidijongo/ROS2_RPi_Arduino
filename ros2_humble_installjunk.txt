@@ -1,0 +1,67 @@
+jongo@jongo-desktop:~$ apt-cache policy | grep universe
+ 500 http://ports.ubuntu.com/ubuntu-ports mantic-security/universe arm64 Packages
+     release v=23.10,o=Ubuntu,a=mantic-security,n=mantic,l=Ubuntu,c=universe,b=arm64
+ 500 http://ports.ubuntu.com/ubuntu-ports mantic-updates/universe arm64 Packages
+     release v=23.10,o=Ubuntu,a=mantic-updates,n=mantic,l=Ubuntu,c=universe,b=arm64
+ 500 http://ports.ubuntu.com/ubuntu-ports mantic/universe arm64 Packages
+     release v=23.10,o=Ubuntu,a=mantic,n=mantic,l=Ubuntu,c=universe,b=arm64
+jongo@jongo-desktop:~$ sudo apt install software-properties-common
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+software-properties-common is already the newest version (0.99.39).
+The following packages were automatically installed and are no longer required:
+  linux-image-6.5.0-1005-raspi linux-modules-6.5.0-1005-raspi
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
+jongo@jongo-desktop:~$ sudo add-apt-repository universe
+Adding component(s) 'universe' to all repositories.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Hit:1 https://download.sublimetext.com apt/stable/ InRelease                               
+Hit:2 http://ports.ubuntu.com/ubuntu-ports mantic InRelease                                
+Hit:3 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease                  
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Ign:5 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:6 http://packages.ros.org/ros2/ubuntu mantic Release
+  404  Not Found [IP: 140.211.166.134 80]
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-arm64.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11 (main/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-small (main/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons (main/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target DEP-11-icons-hidpi (main/dep11/icons-64x64@2.tar) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-arm64) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/ros2-latest.list:1 and /etc/apt/sources.list.d/ros2.list:1
+jongo@jongo-desktop:~$ sudo rm /etc/apt/sources.list.d/ros2-latest.list
+jongo@jongo-desktop:~$ sudo apt update
+Ign:1 http://packages.ros.org/ros2/ubuntu mantic InRelease
+Err:2 http://packages.ros.org/ros2/ubuntu mantic Release                                          
+  404  Not Found [IP: 140.211.166.134 80]
+Hit:3 https://download.sublimetext.com apt/stable/ InRelease                                      
+Hit:4 http://ports.ubuntu.com/ubuntu-ports mantic InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports mantic-updates InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports mantic-security InRelease
+Reading package lists... Done
+E: The repository 'http://packages.ros.org/ros2/ubuntu mantic Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo-desktop:~$ sudo apt install ros-humble-desktop
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package ros-humble-desktop
+jongo@jongo-desktop:~$ 
+
+
+
+#################################################################################
+
