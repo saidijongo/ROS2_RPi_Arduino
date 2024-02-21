@@ -66,4 +66,8 @@ jongo@jongo-desktop:~$ sublime-text
 sublime-text: command not found
 jongo@jongo-desktop:~$ /opt/sublime_text/sublime_text
 jongo@jongo-desktop:~$ sudo ln -s /opt/sublime_text/sublime_text /usr/local/bin/sublime-text
+jongo@jongo-desktop:~$ /opt/sublime_text/sublime_text
+jongo@jongo-desktop:~$ cd Documents/
+jongo@jongo-desktop:~/Documents$ subl .
+
 jongo@jongo-desktop:~$ 
