@@ -1,6 +1,9 @@
 
-
-
+#######
+jongo@jongo-desktop:~$ cat /etc/os-release | grep VERSION=
+VERSION="23.10 (Mantic Minotaur)"
+jongo@jongo-desktop:~$
+#####
 
 jongo@jongo-desktop:~$ locale
 LANG=C.UTF-8
