@@ -2,6 +2,10 @@
 #######
 jongo@jongo-desktop:~$ cat /etc/os-release | grep VERSION=
 VERSION="23.10 (Mantic Minotaur)"
+jongo@jongo-desktop:~$ cat /etc/os-release | grep PRETTY_NAME=
+PRETTY_NAME="Ubuntu 23.10"
+jongo@jongo-desktop:~$ cat /etc/os-release
+
 jongo@jongo-desktop:~$
 #####
 
