@@ -5,6 +5,13 @@ VERSION="23.10 (Mantic Minotaur)"
 jongo@jongo-desktop:~$
 #####
 
+jongo@jongo-desktop:~$ ls /etc/apt/sources.list.d/*ros2*
+/etc/apt/sources.list.d/ros2.list
+jongo@jongo-desktop:~$ sudo rm /etc/apt/sources.list.d/ros2.list
+[sudo] password for jongo:
+jongo@jongo-desktop:~$ ls /etc/apt/sources.list.d/*ros2*
+ls: cannot access '/etc/apt/sources.list.d/*ros2*': No such file or directory
+########
 jongo@jongo-desktop:~$ locale
 LANG=C.UTF-8
 LANGUAGE=
