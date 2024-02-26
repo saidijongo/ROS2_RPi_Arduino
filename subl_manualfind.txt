@@ -1,0 +1,312 @@
+jongo@jongo:~$ sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+[sudo] password for jongo:
+Hit:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease [110 kB]
+Hit:5 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Fetched 110 kB in 5s (20.5 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+locales is already the newest version (2.35-0ubuntu3.6).
+0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+Generating locales (this might take a while)...
+  en_US.ISO-8859-1... done
+  en_US.UTF-8... done
+Generation complete.
+jongo@jongo:~$ export LANG=en_US.UTF-8
+jongo@jongo:~$ sudo apt install software-properties-common curl gnupg lsb-release
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu4).
+curl is already the newest version (7.81.0-1ubuntu1.15).
+gnupg is already the newest version (2.2.27-3ubuntu2.1).
+software-properties-common is already the newest version (0.99.22.9).
+0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+jongo@jongo:~$ sudo add-apt-repository universe
+Adding component(s) 'universe' to all repositories.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+jongo@jongo:~$ sudo apt update
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+jongo@jongo:~$ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+jongo@jongo:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+jongo@jongo:~$ sudo apt update
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+jongo@jongo:~$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  cloud-init firmware-sof-signed tcpdump
+3 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2,337 kB of archives.
+After this operation, 245 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 tcpdump arm64 4.99.1-3ubuntu0.2 [497 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates/restricted arm64 firmware-sof-signed all 2.0-1ubuntu4.5 [1,289 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 cloud-init all 23.4.3-0ubuntu0~22.04.1 [551 kB]
+Fetched 2,337 kB in 4s (655 kB/s)
+Preconfiguring packages ...
+(Reading database ... 118464 files and directories currently installed.)
+Preparing to unpack .../tcpdump_4.99.1-3ubuntu0.2_arm64.deb ...
+Unpacking tcpdump (4.99.1-3ubuntu0.2) over (4.99.1-3ubuntu0.1) ...
+Preparing to unpack .../firmware-sof-signed_2.0-1ubuntu4.5_all.deb ...
+Unpacking firmware-sof-signed (2.0-1ubuntu4.5) over (2.0-1ubuntu4.4) ...
+Preparing to unpack .../cloud-init_23.4.3-0ubuntu0~22.04.1_all.deb ...
+Unpacking cloud-init (23.4.3-0ubuntu0~22.04.1) over (23.3.3-0ubuntu0~22.04.1) ...
+Setting up tcpdump (4.99.1-3ubuntu0.2) ...
+Installing new version of config file /etc/apparmor.d/usr.bin.tcpdump ...
+Setting up cloud-init (23.4.3-0ubuntu0~22.04.1) ...
+Installing new version of config file /etc/profile.d/Z99-cloud-locale-test.sh ...
+Installing new version of config file /etc/profile.d/Z99-cloudinit-warnings.sh ...
+Setting up firmware-sof-signed (2.0-1ubuntu4.5) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for rsyslog (8.2112.0-2ubuntu2.2) ...
+Scanning processes...
+Scanning processor microcode...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Failed to check for processor microcode upgrades.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt-get install apt-transport-https
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,510 B of archives.
+After this operation, 170 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 apt-transport-https all 2.4.11 [1,510 B]
+Fetched 1,510 B in 6s (273 B/s)
+Selecting previously unselected package apt-transport-https.
+(Reading database ... 118475 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.4.11_all.deb ...
+Unpacking apt-transport-https (2.4.11) ...
+Setting up apt-transport-https (2.4.11) ...
+Scanning processes...
+Scanning processor microcode...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Failed to check for processor microcode upgrades.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+deb https://download.sublimetext.com/ apt/stable/
+deb https://download.sublimetext.com/ apt/stable/
+Command 'deb' not found, did you mean:
+  command 'debc' from deb devscripts (2.22.1ubuntu1)
+  command 'dab' from deb bsdgames (2.17-29)
+  command 'dcb' from deb iproute2 (5.15.0-1ubuntu2)
+  command 'dex' from deb dex (0.9.0-1)
+  command 'deb3' from deb quilt (0.66-2.1)
+  command 'derb' from deb icu-devtools (70.1-2)
+  command 'debi' from deb devscripts (2.22.1ubuntu1)
+  command 'dub' from deb dub (1.27.0-2)
+Try: sudo apt install <deb name>
+jongo@jongo:~$ sudo apt update
+Hit:1 https://download.sublimetext.com apt/stable/ InRelease
+Hit:2 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$ $ curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+$: command not found
+gpg: no valid OpenPGP data found.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ $ sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
+$: command not found
+jongo@jongo:~$ $ sudo apt install sublime-text
+$: command not found
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+deb https://download.sublimetext.com/ apt/stable/
+jongo@jongo:~$ curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
+Repository: 'deb https://download.sublimetext.com/ apt/stable/'
+Description:
+Archive for codename: apt/stable/ components:
+More info: https://download.sublimetext.com/
+Adding repository.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Found existing deb entry in /etc/apt/sources.list.d/sublime-text.list
+Updating existing entry instead of using /etc/apt/sources.list.d/archive_uri-https_download_sublimetext_com_-jammy.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/sublime-text.list
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:3 https://download.sublimetext.com apt/stable/ InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$ sudo apt update
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 https://download.sublimetext.com apt/stable/ InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$ sudo apt install sublime-text
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  sublime-text
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 15.2 MB of archives.
+After this operation, 53.4 MB of additional disk space will be used.
+Get:1 https://download.sublimetext.com apt/stable/ sublime-text 4169 [15.2 MB]
+Fetched 15.2 MB in 11s (1,334 kB/s)
+Selecting previously unselected package sublime-text.
+(Reading database ... 118479 files and directories currently installed.)
+Preparing to unpack .../sublime-text_4169_arm64.deb ...
+Unpacking sublime-text (4169) ...
+Setting up sublime-text (4169) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Scanning processes...
+Scanning processor microcode...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Failed to check for processor microcode upgrades.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt update
+Hit:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:3 https://download.sublimetext.com apt/stable/ InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Hit:6 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ which sublime-text
+jongo@jongo:~$ ^C
+jongo@jongo:~$ sudo find / -name sublime-text
+/home/jongo/.cache/sublime-text
+/home/jongo/.config/sublime-text
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo find / -type f -name "sublime_text"
+/opt/sublime_text/sublime_text
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ /opt/sublime_text/sublime_text
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ export PATH="/opt/sublime_text:$PATH"
+jongo@jongo:~$ source ~/.bashrc
+Command 'lesspipe' is available in the following places
+ * /bin/lesspipe
+ * /usr/bin/lesspipe
+The command could not be located because '/usr/bin:/bin' is not included in the PATH environment variable.
+lesspipe: command not found
+Command 'dircolors' is available in the following places
+ * /bin/dircolors
+ * /usr/bin/dircolors
+The command could not be located because '/bin:/usr/bin' is not included in the PATH environment variable.
+dircolors: command not found
+jongo@jongo:~$
+jongo@jongo:~$
