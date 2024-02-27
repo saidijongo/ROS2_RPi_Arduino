@@ -5,8 +5,19 @@ VERSION="23.10 (Mantic Minotaur)"
 jongo@jongo-desktop:~$ cat /etc/os-release | grep PRETTY_NAME=
 PRETTY_NAME="Ubuntu 23.10"
 jongo@jongo-desktop:~$ cat /etc/os-release
-
 jongo@jongo-desktop:~$
+
+jongo@jongo:~$ cat /etc/lsb-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=jammy
+DISTRIB_DESCRIPTION="Ubuntu 22.04.4 LTS"
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ cat /etc/lsb-release | grep DISTRIB_DESCRIPTION
+DISTRIB_DESCRIPTION="Ubuntu 22.04.4 LTS"
+jongo@jongo:~$
+
 #####
 
 jongo@jongo-desktop:~$ ls /etc/apt/sources.list.d/*ros2*
