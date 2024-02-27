@@ -118,9 +118,17 @@ fi
 #export PATH="/opt/sublime_text:PATH"
 
 #echo "Hey Jongo, ROS2 Humble is activated"
-source /opt/ros/humble/setup.bash
+#source /opt/ros/humble/setup.bash
 
 #alias jongo_alias_test="echo \"Alias test for Jongo\""
 
 alias br="source ~/.bashrc; echo \"Just reloaded bashrc\""
-alias humble = "source /opt/ros/humble/setup.bash; echo \"Hey Jongo, ROS2 Humble is activated\""
+#alias humble ="source /opt/ros/humble/setup.bash; echo \"Hey Jongo, ROS2 Humble is activated\""
+#alias humble='source /opt/ros/humble/setup.bash && echo "Hey Jongo, ROS2 Humble is activated"'
+
+
+# Function to activate ROS2 Humble
+humble() {
+    source /opt/ros/humble/setup.bash
+    echo "Hey Jongo, ROS2 Humble is activated"
+}
