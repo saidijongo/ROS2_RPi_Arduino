@@ -1511,3 +1511,43 @@ jongo@jongo-desktop:~$
 
 #################################################################################
 
+
+
+
+
+#REAL JAMMY
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt install ros-humble-desktop
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  alsa-topology-conf alsa-ucm-conf autoconf automake autotools-dev blt..
+
+
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt install ros-humble-ros-core
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ros-humble-ros-core is already the newest version (0.10.0-1jammy.20240220.155811).
+ros-humble-ros-core set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+jongo@jongo:~$ source ~/.bashrc
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ echo "source /opt/ros/humble/setup.zsh" >> ~/.zshrc
+jongo@jongo:~$ source ~/.zshrc
+-bash: ${(%):-%N}: bad substitution
+-bash: cd: -q: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+-bash: /setup.sh: No such file or directory
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+
+
