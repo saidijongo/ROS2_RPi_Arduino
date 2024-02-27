@@ -1552,6 +1552,13 @@ jongo@jongo:~$
 jongo@jongo:~$
 jongo@jongo:~$
 jongo@jongo:~$ cd /opt/ros/humble/lib/demo_nodes_cpp/
+
+odes_cpp$ echo $SHELL
+/bin/bash
+jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$ subl ~/.bashrc
+jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$ 
+jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$ 
+
 jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$ ros2 run demo_nodes_cpp talker
 [INFO] [1708999155.802918367] [talker]: Publishing: 'Hello World: 1'
 [INFO] [1708999156.802766670] [talker]: Publishing: 'Hello World: 2'
