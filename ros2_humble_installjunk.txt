@@ -1549,5 +1549,23 @@ cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
 jongo@jongo:~$
 jongo@jongo:~$
 jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ cd /opt/ros/humble/lib/demo_nodes_cpp/
+jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$ ros2 run demo_nodes_cpp talker
+[INFO] [1708999155.802918367] [talker]: Publishing: 'Hello World: 1'
+[INFO] [1708999156.802766670] [talker]: Publishing: 'Hello World: 2'
+[INFO] [1708999157.802737934] [talker]: Publishing: 'Hello World: 3'
+[INFO] [1708999158.802718975] [talker]: Publishing: 'Hello World: 4'
+[INFO] [1708999159.802752978] [talker]: Publishing: 'Hello World: 5'
+[INFO] [1708999160.802688481] [talker]: Publishing: 'Hello World: 6'
+[INFO] [1708999161.802695168] [talker]: Publishing: 'Hello World: 7'
+[INFO] [1708999162.802662373] [talker]: Publishing: 'Hello World: 8'
+[INFO] [1708999163.802646393] [talker]: Publishing: 'Hello World: 9'
+[INFO] [1708999164.802638041] [talker]: Publishing: 'Hello World: 10'
+[INFO] [1708999165.802612411] [talker]: Publishing: 'Hello World: 11'
+
+^C[INFO] [1708999176.370009992] [rclcpp]: signal_handler(signum=2)
+jongo@jongo:/opt/ros/humble/lib/demo_nodes_cpp$
 
 
