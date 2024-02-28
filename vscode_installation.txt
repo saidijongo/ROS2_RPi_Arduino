@@ -1,0 +1,18 @@
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install software-properties-common apt-transport-https wget -y
+
+wget -O- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg
+
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
+
+sudo apt update
+
+sudo apt install code
+code
+
+# Downloading the ARM64 Debian package using curl
+curl -L https://aka.ms/linux-arm64-deb > code_arm64.deb
+
+# Installing the downloaded vscode package using apt
+sudo apt install ./code_arm64.deb
