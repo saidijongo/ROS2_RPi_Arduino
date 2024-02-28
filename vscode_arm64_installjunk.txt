@@ -1,0 +1,49 @@
+jongo@jongo:~$ curl -L https://aka.ms/linux-arm64-deb > code_arm64.deb
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   162  100   162    0     0    202      0 --:--:-- --:--:-- --:--:--  1528
+100 88.5M  100 88.5M    0     0  9329k      0  0:00:09  0:00:09 --:--:-- 11.1M
+jongo@jongo:~$ 
+jongo@jongo:~$ 
+jongo@jongo:~$ sudo apt install ./code_arm64.deb
+[sudo] password for jongo: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Note, selecting 'code' instead of './code_arm64.deb'
+The following NEW packages will be installed:
+  code
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/92.9 MB of archives.
+After this operation, 390 MB of additional disk space will be used.
+Get:1 /home/jongo/code_arm64.deb code arm64 1.86.2-1707853305 [92.9 MB]
+Selecting previously unselected package code.
+(Reading database ... 206656 files and directories currently installed.)
+Preparing to unpack /home/jongo/code_arm64.deb ...
+Unpacking code (1.86.2-1707853305) ...
+Setting up code (1.86.2-1707853305) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) .........................] 
+Processing triggers for shared-mime-info (2.1-2) ...
+Scanning processes...                                                           
+Scanning candidates...                                                          
+Scanning processor microcode...                                                 
+Scanning linux images...                                                        
+
+Running kernel seems to be up-to-date.
+
+Failed to check for processor microcode upgrades.
+
+Restarting services...
+Service restarts being deferred:
+ systemctl restart systemd-logind.service
+ systemctl restart user@1000.service
+ systemctl restart wpa_supplicant.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+N: Download is performed unsandboxed as root as file '/home/jongo/code_arm64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+jongo@jongo:~$ 
