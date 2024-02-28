@@ -1,3 +1,95 @@
+jongo@jongo:~$ sudo apt install software-properties-common apt-transport-https wget -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+wget is already the newest version (1.21.2-2ubuntu1).
+wget set to manually installed.
+software-properties-common is already the newest version (0.99.22.9).
+apt-transport-https is already the newest version (2.4.11).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ wget -O- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dea                rmor | sudo tee /usr/share/keyrings/vscode.gpg
+--2024-02-28 09:54:52--  https://packages.microsoft.com/keys/microsoft.asc
+Resolving packages.microsoft.com (packages.microsoft.com)... 65.52.183.205
+Connecting to packages.microsoft.com (packages.microsoft.com)|65.52.183.205|:443... connec                ted.
+HTTP request sent, awaiting response... 200 OK
+Length: 983 [application/octet-stream]
+Saving to: ‘STDOUT’
+
+-                      100%[==========================>]     983  --.-KB/s    in 0s
+
+2024-02-28 09:54:53 (107 MB/s) - written to stdout [983/983]
+
+V1X▒*▒afRqіΥ~▒▒▒$▒▒
+▒▒▒▒bd▒-vj!▒",▒▒▒Z▒=m';▒61▒C▒▒▒B▒▒,▒UW▒>▒4▒▒▒▒▒2▒▒V▒,▒_▒o▒▒▒▒▒▒▒c▒b▒▒δ;p)▒W▒P▒
+eD▒o▒▒e▒p▒▒F8▒,a▒ ~2▒▒▒7▒W▒▒b▒R㊼▒k3▒/c▒▒H▒▒H̽▒+M▒▒▒▒▒▒Q▒7Microsoft (Release signing) <gpg                security@microsoft.com>▒5V1X▒
+
+        ▒>▒▒▒)▒▒▒}▒+-▒u▒_▒1▒▒▒o)▒V▒▒▒$▒Ӏ▒\CM▒&▒gw▒<q▒▒▒0ѱ▒▒▒
+                                                            ▒q▒'▒▒▒▒nټD▒▒F▒▒▒B~Q6▒▒r.9m▒f▒                K2▒%▒▒&▒tS▒▒
+1/▒I]▒`▒▒]▒▒:O▒'▒d▒▒▒▒▒t▒▒6#B▒▒▒)▒▒'▒Ԇ▒▒.z▒$f▒>5ЅMn▒cA[▒▒▒▒.xterm-256colorjongo@jongo:~$ x                jongo@jongo:~$ echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
+deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt update
+Get:1 https://packages.microsoft.com/repos/vscode stable InRelease [3,593 B]
+Hit:2 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Get:4 https://packages.microsoft.com/repos/vscode stable/main amd64 Packages [24.7 kB]
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:6 https://download.sublimetext.com apt/stable/ InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease [110 kB]
+Fetched 139 kB in 3s (50.4 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt install code
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package code
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt update
+Hit:1 https://packages.microsoft.com/repos/vscode stable InRelease
+Hit:2 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:5 https://download.sublimetext.com apt/stable/ InRelease
+Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo apt install code
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+E: Unable to locate package code
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ sudo snap install code --classic
+error: snap "code" is not available on stable for this architecture (arm64) but exists on other
+       architectures (amd64).
+jongo@jongo:~$
+jongo@jongo:~$
+jongo@jongo:~$ terminator
+ConfigBase::load: Unable to open /etc/xdg/terminator/config ([Errno 2] No such file or directory: '/etc/xdg/terminator/config')
+
+
+################done deal########################
 jongo@jongo:~$ curl -L https://aka.ms/linux-arm64-deb > code_arm64.deb
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
