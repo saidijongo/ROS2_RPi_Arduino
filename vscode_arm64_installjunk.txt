@@ -138,4 +138,10 @@ No user sessions are running outdated binaries.
 
 No VM guests are running outdated hypervisor (qemu) binaries on this host.
 N: Download is performed unsandboxed as root as file '/home/jongo/code_arm64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+
+jongo@jongo:~$ 
+jongo@jongo:~$ 
+jongo@jongo:~$ 
+jongo@jongo:~$ code
+
 jongo@jongo:~$ 
