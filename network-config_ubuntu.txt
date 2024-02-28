@@ -1,0 +1,25 @@
+sudo nano network-config.yaml
+sudo mv network-config.yaml /etc/netplan/
+sudo netplan apply
+sudo nano /etc/netplan/network-config.yaml
+
+sudo chmod 644 /etc/netplan/network-config.yaml
+
+sudo chmod 600 /etc/netplan/network-config.yaml
+sudo chmod 600 /etc/netplan/50-cloud-init.yaml
+sudo chmod 600 /etc/netplan/50-cloud-init.yaml
+
+
+
+
+dpkg -l | grep network-manager
+sudo apt install network-manager
+sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
+sudo journalctl -xe
+
+sudo nmcli device wifi list
+
+rfkill list
+sudo rfkill unblock wifi
+sudo lshw -C network
