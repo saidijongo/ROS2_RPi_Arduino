@@ -43,3 +43,23 @@ LGPL-3.0-only
 MIT
 MIT-0
 jongo@jongo:~/ros2_ws/src$ 
+jongo@jongo:~/ros2_ws/src$ 
+#####
+jongo@jongo:~/ros2_ws/src$ code .
+jongo@jongo:~/ros2_ws/src$ cd ..
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ colcon build
+Starting >>> damin_robot1
+--- stderr: damin_robot1                   
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+---
+Finished <<< damin_robot1 [5.15s]
+
+Summary: 1 package finished [8.89s]
+  1 package had stderr output: damin_robot1
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ 
+
