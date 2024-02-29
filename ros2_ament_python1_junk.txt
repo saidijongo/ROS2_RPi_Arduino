@@ -1,1 +1,54 @@
 
+jongo@jongo:~$ cd ros2_ws/
+jongo@jongo:~/ros2_ws$ cd src/
+jongo@jongo:~/ros2_ws/src$ ls
+jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_
+
+ros2: command not found
+jongo@jongo:~/ros2_ws/src$ 
+jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_python --dependencies rclpy
+ros2: command not found
+jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_python --dependencies rclpy
+ros2: command not found
+jongo@jongo:~/ros2_ws/src$ ls
+jongo@jongo:~/ros2_ws/src$ $PATH
+bash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin: No such file or directory
+jongo@jongo:~/ros2_ws/src$ which ros2
+jongo@jongo:~/ros2_ws/src$ source ~/.bashrc
+jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_python --dependencies rclpy
+going to create a new package
+package name: damin_robot1
+destination directory: /home/jongo/ros2_ws/src
+package format: 3
+version: 0.0.0
+description: TODO: Package description
+maintainer: ['jongo <jongo@todo.todo>']
+licenses: ['TODO: License declaration']
+build type: ament_python
+dependencies: ['rclpy']
+creating folder ./damin_robot1
+creating ./damin_robot1/package.xml
+creating source folder
+creating folder ./damin_robot1/damin_robot1
+creating ./damin_robot1/setup.py
+creating ./damin_robot1/setup.cfg
+creating folder ./damin_robot1/resource
+creating ./damin_robot1/resource/damin_robot1
+creating ./damin_robot1/damin_robot1/__init__.py
+creating folder ./damin_robot1/test
+creating ./damin_robot1/test/test_copyright.py
+creating ./damin_robot1/test/test_flake8.py
+creating ./damin_robot1/test/test_pep257.py
+
+[WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+It is recommended to use one of the ament license identitifers:
+Apache-2.0
+BSL-1.0
+BSD-2.0
+BSD-2-Clause
+BSD-3-Clause
+GPL-3.0-only
+LGPL-3.0-only
+MIT
+MIT-0
+jongo@jongo:~/ros2_ws/src$ 
