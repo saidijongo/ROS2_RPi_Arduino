@@ -1,16 +1,7 @@
 
 jongo@jongo:~$ cd ros2_ws/
 jongo@jongo:~/ros2_ws$ cd src/
-jongo@jongo:~/ros2_ws/src$ ls
-jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_
 
-ros2: command not found
-jongo@jongo:~/ros2_ws/src$ 
-jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_python --dependencies rclpy
-ros2: command not found
-jongo@jongo:~/ros2_ws/src$ ros2 pkg create damin_robot1 --build-type ament_python --dependencies rclpy
-ros2: command not found
-jongo@jongo:~/ros2_ws/src$ ls
 jongo@jongo:~/ros2_ws/src$ $PATH
 bash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin: No such file or directory
 jongo@jongo:~/ros2_ws/src$ which ros2
