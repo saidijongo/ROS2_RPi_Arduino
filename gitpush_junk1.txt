@@ -1,3 +1,7 @@
+
+####################################
+Addested test nodes, node1 and node2
+####################################
 jongo@jongo:~$ ls
 code_arm64.deb  ros2_ws
 jongo@jongo:~$ cd ros2_ws
@@ -22,3 +26,8 @@ remote: Resolving deltas: 100% (2/2), completed with 1 local object.
 To https://github.com/saidijongo/ROS2_RPiArduino_Serial.git
    3e061e2..9cd74ce  master -> master
 jongo@jongo:~/ros2_ws$ 
+
+
+
+######################################
+#############################
