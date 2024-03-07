@@ -1,0 +1,24 @@
+jongo@jongo:~$ ls
+code_arm64.deb  ros2_ws
+jongo@jongo:~$ cd ros2_ws
+jongo@jongo:~/ros2_ws$ ls
+build  install  log  README.md  src
+jongo@jongo:~/ros2_ws$ git add .
+jongo@jongo:~/ros2_ws$ git commit -m "New Rpi Nodes"
+[master 9cd74ce] New Rpi Nodes
+ 3 files changed, 39 insertions(+), 1 deletion(-)
+ create mode 100755 src/damin_robot1/damin_robot1/node1.py
+ create mode 100755 src/damin_robot1/damin_robot1/node2.py
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ 
+jongo@jongo:~/ros2_ws$ git push origin master
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 1.07 KiB | 547.00 KiB/s, done.
+Total 8 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/saidijongo/ROS2_RPiArduino_Serial.git
+   3e061e2..9cd74ce  master -> master
+jongo@jongo:~/ros2_ws$ 
