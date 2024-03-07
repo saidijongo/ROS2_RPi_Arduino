@@ -1,0 +1,86 @@
+#Step 1: Create ROS2 Workspace
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws
+
+#Step 2: Build ROS2 Workspace
+colcon build
+
+#Step 3: Initialize Git Repository
+git init
+
+#Step 4: Configure Git
+git config --global user.name "saidijongo"
+git config --global user.email "saidijongo@gmail.com"
+
+#Step 5: Add, Commit, and Push Changes
+git add .
+git commit -m "Initial commit"
+
+#Step 6: Connect to Remote Repository 
+git remote add origin https://github.com/saidijongo/ROS2_RPiArduino_Serial.git
+#OR
+git remote add origin https://saidijongo:ghp_BGWy4CDMYFAKEACCESS2RiSi5@github.com/saidijongo/ROS2_RPiArduino_Serial.git
+
+###############################################################################################################
+################
+##########
+Step 1: Create ROS2 Workspace
+
+Open your terminal.
+Run the following command to create a directory named ros2_ws and a subdirectory named src within it:
+bash
+Copy code
+mkdir -p ~/ros2_ws/src
+Navigate to the newly created ros2_ws directory:
+bash
+Copy code
+cd ~/ros2_ws
+Step 2: Build ROS2 Workspace
+
+Run the following command to build the ROS2 workspace using colcon:
+Copy code
+colcon build
+Step 3: Initialize Git Repository
+
+Still in the ros2_ws directory, initialize a Git repository by running:
+csharp
+Copy code
+git init
+Step 4: Configure Git
+
+Configure your Git username and email globally:
+arduino
+Copy code
+git config --global user.name "saidijongo"
+git config --global user.email "saidijongo@gmail.com"
+Step 5: Add, Commit, and Push Changes
+
+Add all files in the workspace to the staging area:
+csharp
+Copy code
+git add .
+Commit the changes with an initial commit message:
+sql
+Copy code
+git commit -m "Initial commit"
+Step 6: Connect to Remote Repository
+
+Add the remote repository URL where you want to push your changes:
+csharp
+Copy code
+git remote add origin https://github.com/saidijongo/ROS2_RPiArduino_Serial.git
+OR
+bash
+Copy code
+git remote add origin https://saidijongo:ghp_BGWyY50Q진짜아님SRiSi5@github.com/saidijongo/ROS2_RPiArduino_Serial.git
+
+
+#Step 7: Pull Changes from Remote Repository
+git pull --rebase origin master
+
+#Step 8: Resolve Merge Conflicts (if any)
+git rebase --continue
+
+git push -u origin master
+
+
