@@ -30,4 +30,14 @@ jongo@jongo:~/ros2_ws$
 
 
 ######################################
+jongo@jongo:~/ros2_ws$ colcon build --symlink-install
+Starting >>> damin_robot1
+Finished <<< damin_robot1 [6.10s]          
+
+Summary: 1 package finished [9.85s]
+jongo@jongo:~/ros2_ws$ 
+
+jongo@jongo:~/ros2_ws$ source ~/.bashrc
+jongo@jongo:~/ros2_ws$ 
+
 #############################
