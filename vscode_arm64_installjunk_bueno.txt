@@ -70,8 +70,7 @@ Reading state information... Done
 All packages are up to date.
 W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 jongo@jongo:~$
-jongo@jongo:~$
-jongo@jongo:~$
+
 jongo@jongo:~$ sudo apt install code
 Reading package lists... Done
 Building dependency tree... Done
@@ -139,8 +138,6 @@ No user sessions are running outdated binaries.
 No VM guests are running outdated hypervisor (qemu) binaries on this host.
 N: Download is performed unsandboxed as root as file '/home/jongo/code_arm64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
 
-jongo@jongo:~$ 
-jongo@jongo:~$ 
 jongo@jongo:~$ 
 jongo@jongo:~$ code
 
