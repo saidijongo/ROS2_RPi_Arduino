@@ -4,6 +4,7 @@ ROS2 humble
 ROS1: versions
 ![image](https://github.com/saidijongo/ROS2_RPi_Ubuntu22_04LTS/assets/31678025/c51d6a8d-7bd5-4ece-b103-ad0e70af125b)
 
+https://automaticaddison.com/how-to-upload-a-ros-2-project-to-github/
 Installing Gazebo
 Gazebo Ubuntu packages
 The easiest way of installing Gazebo is to use packages. There are two main repositories which host Gazebo packages: one is packages.ros.org and the other is packages.osrfoundation.org. At the time of writing:
