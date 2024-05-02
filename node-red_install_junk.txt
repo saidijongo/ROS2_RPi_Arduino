@@ -1,0 +1,130 @@
+jongo@jongo:~$ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+2024-05-02 10:14:39 - Installing pre-requisites
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Get:3 https://packages.microsoft.com/ubuntu/22.04/prod jammy InRelease [3,632 B]
+Get:4 https://packages.microsoft.com/repos/vscode stable InRelease [3,594 B]
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:6 https://download.sublimetext.com apt/stable/ InRelease
+Hit:7 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:8 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Hit:9 http://packages.osrfoundation.org/gazebo/ubuntu-stable focal InRelease
+Fetched 7,226 B in 10s (719 B/s)     
+Reading package lists... Done
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: http://packages.osrfoundation.org/gazebo/ubuntu-stable/dists/focal/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ca-certificates is already the newest version (20230311ubuntu0.22.04.1).
+ca-certificates set to manually installed.
+curl is already the newest version (7.81.0-1ubuntu1.16).
+gnupg is already the newest version (2.2.27-3ubuntu2.1).
+apt-transport-https is already the newest version (2.4.12).
+0 upgraded, 0 newly installed, 0 to remove and 75 not upgraded.
+Get:1 https://deb.nodesource.com/node_18.x nodistro InRelease [12.1 kB]
+Hit:2 http://packages.osrfoundation.org/gazebo/ubuntu-stable focal InRelease
+Get:3 https://packages.microsoft.com/ubuntu/22.04/prod jammy InRelease [3,632 B]
+Get:4 https://deb.nodesource.com/node_18.x nodistro/main arm64 Packages [8,533 B]
+Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+Get:6 https://packages.microsoft.com/repos/vscode stable InRelease [3,594 B]
+Hit:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+Hit:8 https://download.sublimetext.com apt/stable/ InRelease
+Hit:9 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+Hit:10 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+Hit:11 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Fetched 27.9 kB in 5s (6,086 B/s)  
+Reading package lists... Done
+W: http://packages.osrfoundation.org/gazebo/ubuntu-stable/dists/focal/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://download.sublimetext.com/apt/stable/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+2024-05-02 10:15:06 - Repository configured successfully. To install Node.js, run: apt-get install nodejs -y
+jongo@jongo:~$ 
+jongo@jongo:~$ 
+jongo@jongo:~$ sudo apt-get install -y nodejs build-essential
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+build-essential is already the newest version (12.9ubuntu3).
+The following NEW packages will be installed:
+  nodejs
+0 upgraded, 1 newly installed, 0 to remove and 75 not upgraded.
+Need to get 28.9 MB of archives.
+After this operation, 187 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_18.x nodistro/main arm64 nodejs arm64 18.20.2-1nodesource1 [28.9 MB]
+Fetched 28.9 MB in 3s (8,354 kB/s) 
+Selecting previously unselected package nodejs.
+(Reading database ... 244624 files and directories currently installed.)
+Preparing to unpack .../nodejs_18.20.2-1nodesource1_arm64.deb ...
+Unpacking nodejs (18.20.2-1nodesource1) ...
+Setting up nodejs (18.20.2-1nodesource1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...                 
+Scanning processor microcode...       
+Scanning linux images...              
+
+Running kernel seems to be
+ up-to-date.
+
+Failed to check for processor
+ microcode upgrades.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated
+ binaries.
+
+No VM guests are running outdated
+ hypervisor (qemu) binaries on this
+ host.
+jongo@jongo:~$ nodejs --version
+v18.20.2
+jongo@jongo:~$ 
+jongo@jongo:~$ sudo npm install -g --unsafe-perm node-red
+
+added 303 packages in 44s
+
+46 packages are looking for funding
+  run `npm fund` for details
+npm notice 
+npm notice New minor version of npm available! 10.5.0 -> 10.7.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v10.7.0
+npm notice Run npm install -g npm@10.7.0 to update!
+npm notice 
+jongo@jongo:~$ 
+jongo@jongo:~$ node-red
+2 May 10:18:30 - [info] 
+
+Welcome to Node-RED
+===================
+
+2 May 10:18:30 - [info] Node-RED version: v3.1.9
+2 May 10:18:30 - [info] Node.js  version: v18.20.2
+2 May 10:18:30 - [info] Linux 5.15.0-1053-raspi arm64 LE
+2 May 10:18:31 - [info] Loading palette nodes
+2 May 10:18:33 - [info] Settings file  : /home/jongo/.node-red/settings.js
+2 May 10:18:33 - [info] Context store  : 'default' [module=memory]
+2 May 10:18:33 - [info] User directory : /home/jongo/.node-red
+2 May 10:18:33 - [warn] Projects disabled : editorTheme.projects.enabled=false
+2 May 10:18:33 - [info] Flows file     : /home/jongo/.node-red/flows.json
+2 May 10:18:33 - [info] Creating new flow file
+2 May 10:18:33 - [warn] 
+
+---------------------------------------------------------------------
+Your flow credentials file is encrypted using a system-generated key.
+
+If the system-generated key is lost for any reason, your credentials
+file will not be recoverable, you will have to delete it and re-enter
+your credentials.
+
+You should set your own key using the 'credentialSecret' option in
+your settings file. Node-RED will then re-encrypt your credentials
+file using your chosen key the next time you deploy a change.
+---------------------------------------------------------------------
+
+2 May 10:18:33 - [info] Server now running at http://127.0.0.1:1880/
+2 May 10:18:33 - [warn] Encrypted credentials not found
+2 May 10:18:33 - [info] Starting flows
+2 May 10:18:33 - [info] Started flows
+
