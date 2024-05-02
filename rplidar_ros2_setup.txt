@@ -1,0 +1,44 @@
+sudo ufw status
+sudo ufw allow 1880
+sudo ufw reload
+sudo ufw status
+
+xdg-open http://127.0.0.1:1880/
+sudo snap install firefox
+firefox http://127.0.0.1:1880/
+
+
+cd /path/to/your/colcon_workspace/src
+git clone https://github.com/CreedyNZ/rplidar_ros2.git
+
+source install/setup.bash
+colcon build --symlink-install
+
+source ./install/setup.bash
+ros2 run rplidar_ros rplidarNode
+
+source ./install/setup.bash
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 world laser_frame
+
+source ./install/setup.bash
+rviz2 -d ./install/rplidar_ros/share/rplidar_ros/rviz/rplidar.rviz
+
+
+###########################
+cd ~/lidar_depthcam_ws/src
+git clone https://github.com/CreedyNZ/rplidar_ros2.git 
+source ~/lidar_depthcam_ws/install/setup.bash
+colcon build --symlink-install
+
+source ~/lidar_depthcam_ws/install/setup.bash
+ros2 run rplidar_ros rplidarNode
+
+cd ~/lidar_depthcam_ws
+source install/setup.bash
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 world laser_frame
+
+cd ~/lidar_depthcam_ws
+source install/setup.bash
+rviz2 -d install/rplidar_ros/share/rplidar_ros/rviz/rplidar.rviz
+
+
