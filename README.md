@@ -19,3 +19,8 @@ gazebo 9.x series (package name gazebo9)
 gazebo 11.x series (package name gazebo11)
 This means that including the osrfoundation repository is not strictly needed to get the Gazebo Ubuntu package. It can be installed from the ros repository.
 
+
+https://github.com/knei-knurow/lidar-stm32/tree/main
+https://github.com/Lembed/ROS-FreeRTOS-STM32/tree/master
+
+
